@@ -107,6 +107,6 @@ class RegisterController extends Controller
         $customers->save();
         //Login
         $this->guard()->login($customers);
-        return redirect('/home');
+        return redirect($id . "/userdetail");
     }
 }

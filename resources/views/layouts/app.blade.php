@@ -56,8 +56,11 @@
           <li><a href="/login"><span class="glyphicon glyphicon-lock"></span> Sign In /</a></li>
           <li><a href="/register"><span class="glyphicon glyphicon-edit"></span> Register</a></li>
         </ul>
+
 @elseif(Auth::user())
-        
+@if(Auth::user()->isAdmin(true))
+      <a href="/dashboard">Dashboard</a>
+@endif        
         <div class="row">
           <a class="logout" href="{{ url('/logout') }}"
               onclick="event.preventDefault();
@@ -68,6 +71,8 @@
         <form id="logout-form" action="{{ url('/logout') }}" method="POST">
           {{ csrf_field() }}
         </form>
+
+
 @endif
       </div>
     </nav>
