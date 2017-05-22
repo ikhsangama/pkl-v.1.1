@@ -32,9 +32,17 @@ class User extends Authenticatable
 
     public function isAdmin()
     {
-        if($this->level == '0') {
-            return true; 
-                return false;
-        }
+      if($this->level == '0') {
+          return true;
+              return false;
+      }
+    }
+
+    public function isLengkap()
+    {
+      if($this->null(gender)) {
+          return true;
+              return false;
+      }
     }
 }

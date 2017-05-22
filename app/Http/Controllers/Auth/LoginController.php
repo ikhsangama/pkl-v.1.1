@@ -66,6 +66,11 @@ class LoginController extends Controller
                 Auth::logout();
                 return redirect('/login')->with('warning','Akun Belum Aktif, Lakukan Verifikasi Email');
             }
+            //Menguji Gender, tanda sudah melengkapi atau belum
+            if (Auth::user()->gender==NULL){
+                $this->sendLoginResponse($request);
+                return redirect(Auth::user()->id . "/userdetail");
+            }
             return $this->sendLoginResponse($request);
         }
 
