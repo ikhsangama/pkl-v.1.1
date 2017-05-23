@@ -67,7 +67,7 @@ class LengkapiDataController extends Controller
           if(!$customer){
             abort(404);
           }
-          return view('lengkapiprofile', ['customer' => $customer]);
+          return view('lengkapidata', ['customer' => $customer]);
     }
 
     /**
@@ -79,20 +79,20 @@ class LengkapiDataController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //Simpan Data Hasil Edit
+        //Simpan Data
         $this->validate($request, [
             'firstname'  => 'required|alpha',
-            'lastname'  => 'required|alpha',
+            'lastname'   => 'required|alpha',
             'alamat'     => 'required',
-            'phone'     => 'required|between:10,12',
-            'gender'   => 'required|max:50',
+            'phone'      => 'required|between:10,12',
+            'gender'     => 'required',
         ]);
         $customer = User::find($id);
         $customer->firstname = $request->firstname;
-        $customer->lastname = $request->lastname;
-        $customer->alamat   = $request->alamat;
-        $customer->phone    = $request->phone;
-        $customer->gender   = $request->gender;
+        $customer->lastname  = $request->lastname;
+        $customer->alamat    = $request->alamat;
+        $customer->phone     = $request->phone;
+        $customer->gender    = $request->gender;
         $customer->save();
         return redirect ('/');
     }

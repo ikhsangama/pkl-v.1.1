@@ -31,7 +31,9 @@ Route::get('/{id}/userdetail', 'LengkapiDataController@edit');
 Route::PUT('/{id}', 'LengkapiDataController@update');
 
 // Manage Profile
-Route::get('/{id}/manage', 'CustomerController@edit');
+Route::get('/{id}/manageprofile', 'EditProfilController@edit');  //Lengkapi Data Terganggu, tidak bisa menuju ke '/' atau
+Route::PUT('/{id}/update', 'EditProfilController@update'); 				//tidak mau input data (tetap di view lengkapidata)
+
 
 // Booking Form
 Route::get('/booking', function () {

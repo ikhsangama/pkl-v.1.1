@@ -10,7 +10,7 @@
         <link rel="shortcut icon" href="assets/images/favicon.ico">
 
         <!-- App title -->
-        <title>User Detail</title>
+        <title>Completing Form</title>
 
         <!-- App CSS -->
         <link href="/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
@@ -42,7 +42,7 @@
       </div>
         <div class="m-t-40 card-box">
             <div class="text-center">
-                <h4 class="text-uppercase font-bold m-b-0">Lengkapi Profil: {{$customer->username}}</h4>
+                <h4 class="text-uppercase font-bold m-b-0">Lengkapi Data : {{$customer->username}}</h4>
             </div>
             <div class="panel-body">
                 <form class="form-horizontal m-t-20" method="POST" action="/{{$customer->id}}">

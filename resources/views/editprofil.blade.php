@@ -42,19 +42,19 @@
       </div>
         <div class="m-t-40 card-box">
             <div class="text-center">
-                <h4 class="text-uppercase font-bold m-b-0">User Detail</h4>
+                <h4 class="text-uppercase font-bold m-b-0">User Detail : {{$customer->username}}</h4>
             </div>
             <div class="panel-body">
-                <form class="form-horizontal m-t-20" method="POST" action="/{{$customer->id}}">
+                <form class="form-horizontal m-t-20" method="POST" action="/{{$customer->id}}/update">
 
                     <div class="form-group ">
                         <div class="row">
                             <div class="col-xs-12 col-sm-12 col-md-12">
-                                <input class="form-control" name="firstname" type="text"  placeholder="Your First Name" required autofocus>
+                                <input class="form-control" name="username" type="text"  value="{{$customer->username}}" required autofocus>
                                 <!-- validation-->
-                                @if ($errors->has('firstname'))
+                                @if ($errors->has('username'))
                                 <!-- <div class="container red-text text accent-3"> -->
-                                  {{ $errors->first('firstname') }}
+                                  {{ $errors->first('username') }}
                                 <!-- </div> -->
                                 @endif
                                 <!-- endvalidation-->
@@ -63,11 +63,11 @@
                         <br>
                         <div class="row">
                             <div class="col-xs-12 col-sm-12 col-md-12">
-                                <input class="form-control" name="lastname" type="text"  placeholder="Your Last Name" required autofocus>
+                                <input class="form-control" name="email" type="email"  value="{{$customer->email}}" required>
                                 <!-- validation-->
-                                @if ($errors->has('lastname'))
+                                @if ($errors->has('email'))
                                 <!-- <div class="container red-text text accent-3"> -->
-                                  {{ $errors->first('lastname') }}
+                                {{ $errors->first('email') }}
                                 <!-- </div> -->
                                 @endif
                                 <!-- endvalidation-->
@@ -76,20 +76,7 @@
                         <br>
                         <div class="row">
                             <div class="col-xs-12 col-sm-12 col-md-12">
-                                <textarea class="form-control" rows="5" name="alamat" placeholder="Your Address" required></textarea>
-                                <!-- validation-->
-                                @if ($errors->has('alamat'))
-                                <!-- <div class="container red-text text accent-3"> -->
-                                  {{ $errors->first('alamat') }}
-                                <!-- </div> -->
-                                @endif
-                                <!-- endvalidation-->
-                            </div>
-                        </div>
-                        <br>
-                        <div class="row">
-                            <div class="col-xs-12 col-sm-12 col-md-12">
-                                <input class="form-control" name="phone" type="text"  placeholder="Your Phone" required>
+                                <input class="form-control" name="phone" type="text"  value="{{$customer->phone}}" required>
                                 <!-- validation-->
                                 @if ($errors->has('phone'))
                                 <!-- <div class="container red-text text accent-3"> -->
@@ -101,19 +88,15 @@
                         </div>
                         <br>
                         <div class="row">
-                            <div class="radio">
-                                <div class="col-xs-3 col-sm-3 col-md-3">
-                                    <input type="radio" name="gender" id="radio1" value="M" checked>
-                                    <label for="radio1">
-                                        Male
-                                    </label>
-                                </div>
-                                <div class="col-xs-3 col-sm-3 col-md-3">
-                                    <input type="radio" name="gender" id="radio2" value="F">
-                                    <label for="radio2">
-                                        Female
-                                    </label>
-                                </div>
+                            <div class="col-xs-12 col-sm-12 col-md-12">
+                                <textarea class="form-control" rows="5" name="alamat" required></textarea>
+                                <!-- validation-->
+                                @if ($errors->has('alamat'))
+                                <!-- <div class="container red-text text accent-3"> -->
+                                  {{ $errors->first('alamat') }}
+                                <!-- </div> -->
+                                @endif
+                                <!-- endvalidation-->
                             </div>
                         </div>
                         <br>
@@ -123,7 +106,7 @@
                                 <div class="col-xs-12 col-sm-12 col-md-12">
                                 {{ csrf_field() }}
                                     <button class="btn btn-custom btn-bordred btn-block waves-effect waves-light" type="submit">
-                                        Completing Your Profile
+                                        Update Your Profile
                                     </button>
                                 </div>
                             </div>
