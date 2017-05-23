@@ -13,9 +13,26 @@
 
 Route::group(['middleware' => 'admin'], function(){
 	//Dashboard
-	Route::get('/dashboard', function(){
-		return view('admin.dashboard');
-	});
+	Route::get('/dashboard', 'DashboardController@index');
+
+	//CRUD Agent
+	Route::get('/agent', 'AgentsController@showAll');
+	Route::get('/agent/{id}','AgentsController@show');
+	Route::get('/agentcreate','AgentsController@createByAdmin');
+	Route::post('/agent','AgentsController@storeByAdmin');
+	Route::post('/agentupdate/{id}','AgentsController@edit');
+	Route::get('/agentdelete/{id}','AgentsController@destroy');
+
+	//CRUD Customer
+	Route::get('/customer', 'CustomerController@showAll');
+	Route::get('/customer/{id}', 'CustomerController@show');
+	Route::get('/customercreate/', 'CustomerController@createByAdmin');
+	Route::post('/customer/', 'CustomerController@storeByAdmin');
+	Route::post('/customerupdate/{id}', 'CustomerController@edit');
+	Route::get('/customerdelete/{id}', 'CustomerController@destroy');
+
+	//CRUD Product
+	Route::get('/product', 'PaketController@showAll');
 });
 
 Route::get('/', 'WelcomeController@index');
