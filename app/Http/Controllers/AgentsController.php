@@ -85,7 +85,13 @@ class AgentsController extends Controller {
 
   public function storeByAdmin(Request $request)
   {
-    dd($request);
+    $this->validate($request, [
+  // 'nama' => 'required',
+  // 'email' => 'required|email|max:35|unique:pengguna',
+  // 'password' => 'required|min:3|confirmed',
+  'fotodiri' => 'mimes:jpeg,jpg,png|max:4000',
+  ]);
+
     $agent = new Agents;
     $agent->username = $request->username;
     $agent->email = $request->email;
@@ -98,18 +104,19 @@ class AgentsController extends Controller {
     $agent->bahasa = $request->bahasa;
     $agent->tanggallahir = $request->tanggallahir;
     $agent->verif_stat = 1;
-    // $agent->foto = $request->foto;
-    // $agent->multidokumen = $request->multidokumen;
 
-    // save gambar
-    // $file = $request->file('foto');
-    $filename = $request->foto;
-    $request->file('foto')->storeAs("public/foto",$filename);
+    //simpan gambar DIRI
+    $fileDIRI = $request->username. '_diri.png';
+    $request->file('fotoktp')->storeAs("public\diri",$fileDIRI);
+    $agent->foto = $fileDIRI;
+
+    //simpan gambar KTP
+    $fileKTP = $request->username. '_KTP.png';
+    $request->file('fotodiri')->storeAs("public\KTP",$fileKTP);
+    $agent->multidokumen = $fileKTP;
 
     $agent->save();
     return redirect ('/agent');
-
-
   }
 
   public function showAll()
