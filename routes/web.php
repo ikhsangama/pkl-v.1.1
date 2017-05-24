@@ -35,6 +35,16 @@ Route::group(['middleware' => 'admin'], function(){
 	Route::get('/product', 'PaketController@showAll');
 });
 
+Route::group(['middleware' => 'customer'], function(){
+	//lengkapiDataSetelahVerif
+	Route::get('/{id}/userdetail', 'LengkapiDataController@edit');
+	Route::PUT('/{id}', 'LengkapiDataController@update');
+
+	// Manage Profile
+	Route::get('/{id}/manageprofile', 'EditProfilController@edit');
+	Route::PUT('/{id}/update', 'EditProfilController@update');
+});
+
 Route::get('/', 'WelcomeController@index');
 Route::get('/listing', 'WelcomeController@index');
 Route::post('/listing', 'WelcomeController@show');
@@ -42,15 +52,6 @@ Route::post('/listing', 'WelcomeController@show');
 Route::get('/verify/{ver_token}/{id}','Auth\RegisterController@verify_register');
 
 Auth::routes();
-
-//lengkapiDataSetelahVerif
-Route::get('/{id}/userdetail', 'LengkapiDataController@edit');
-Route::PUT('/{id}', 'LengkapiDataController@update');
-
-// Manage Profile
-Route::get('/{id}/manageprofile', 'EditProfilController@edit');  //Lengkapi Data Terganggu, tidak bisa menuju ke '/' atau
-Route::PUT('/{id}/update', 'EditProfilController@update'); 				//tidak mau input data (tetap di view lengkapidata)
-
 
 // Booking Form
 Route::get('/booking', function () {

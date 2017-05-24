@@ -11,6 +11,12 @@ use App\Http\Controllers\Controller;
 
 class EditProfilController extends Controller
 {
+
+  public function __construct(){
+    $this->middleware('auth');
+    $this->middleware('customer');
+  }
+
     /**
      * Display a listing of the resource.
      *

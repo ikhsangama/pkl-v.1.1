@@ -12,7 +12,8 @@ namespace App\Http\Controllers;
 // use Illuminate\Support\Facades\DB;
 // use App\Http\Middleware\VerifyCsrfToken;
 
-use App\Models\Agents;
+use User;
+use App\Models\Agent;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -33,7 +34,7 @@ class AgentsController extends Controller {
 
   public function register(Request $request)
   {
-    $agents = new Agents();
+    $agents = new Agent();
     $agents->username = $request->username;
     $agents->password = sha1($request->password);
     $agents->save();
@@ -43,7 +44,7 @@ class AgentsController extends Controller {
 
   public function create($id)
   {
-    $agents = new Agents();
+    $agents = new Agent();
     $data['id'] = $id;
     $data['query'] = $agents::where('id', $id)->get();
     return view('agents_create', $data);
@@ -87,12 +88,13 @@ class AgentsController extends Controller {
   {
     $this->validate($request, [
   // 'nama' => 'required',
+    'username' => 'required|unique',
   // 'email' => 'required|email|max:35|unique:pengguna',
   // 'password' => 'required|min:3|confirmed',
   'fotodiri' => 'mimes:jpeg,jpg,png|max:4000',
   ]);
 
-    $agent = new Agents;
+    $agent = new Agent;
     $agent->username = $request->username;
     $agent->email = $request->email;
     $agent->password = $request->password;
@@ -121,14 +123,14 @@ class AgentsController extends Controller {
 
   public function showAll()
   {
-    $data=Agents::all();
+    $data=Agent::all();
     return view('admin.agent')->with('data',$data);
   }
 
   public function show($id)
   {
     if(isset($id)) {
-        $request =Agents::find($id);
+        $request =Agent::find($id);
         $data = array(
         'fullname'=>$request->fullname,
         'username'=>$request->username,
@@ -173,9 +175,9 @@ class AgentsController extends Controller {
   public function destroy($id)
   {
    if(isset($id)) {
-      $record =Agents::find($id);
+      $record =Agent::find($id);
       if($record) {
-          $data=Agents::find($id)->delete();
+          $data=Agent::find($id)->delete();
           if ($data) {
             echo "success";
           }else{

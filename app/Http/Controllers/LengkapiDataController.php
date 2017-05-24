@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\Models\Customer;
+use App\Models\Agent;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -11,6 +13,11 @@ use App\Http\Controllers\Controller;
 
 class LengkapiDataController extends Controller
 {
+
+  public function __construct(){
+    $this->middleware('auth');
+    $this->middleware('customer');
+  }
     /**
      * Display a listing of the resource.
      *
@@ -79,6 +86,7 @@ class LengkapiDataController extends Controller
      */
     public function update(Request $request, $id)
     {
+      // dd($request, $id);
         //Simpan Data
         $this->validate($request, [
             'firstname'  => 'required|alpha',
@@ -87,7 +95,12 @@ class LengkapiDataController extends Controller
             'phone'      => 'required|between:10,12',
             'gender'     => 'required',
         ]);
-        $customer = User::find($id);
+        $user_id = $id;
+        // dd(User::find($id), Customer::find($user_id));
+        // $user_id = $id;
+        $customer = Customer::find($user_id);
+        // dd($customer = Customer::find($user_id));
+        // dd($customer);
         $customer->firstname = $request->firstname;
         $customer->lastname  = $request->lastname;
         $customer->alamat    = $request->alamat;

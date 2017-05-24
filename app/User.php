@@ -8,7 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 class User extends Authenticatable
 {
       // dd("sini");
-    protected $table = 'customers';
+    // protected $table = 'customers';
 
     use Notifiable;
 
@@ -38,11 +38,24 @@ class User extends Authenticatable
       }
     }
 
-    public function isLengkap()
+    public function isCustomer()
     {
-      if($this->null(gender)) {
+      if($this->level == '1') {
           return true;
               return false;
       }
+    }
+
+    public function isAgent()
+    {
+      if($this->level == '2') {
+          return true;
+              return false;
+      }
+    }
+    //RELATION
+    //ikhsan
+    public function customer(){
+      return $this->hasOne('App\Models\Customer','user_id');
     }
 }

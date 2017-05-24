@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use App\Models\Customer;
+use App\Models\Agent;
 use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -56,7 +58,7 @@ class RegisterController extends Controller
     {
         return Validator::make($data, [
             'username' => 'required|max:255',
-            'email' => 'required|email|max:255|unique:customers',
+            'email' => 'required|email|max:255|unique:users',
             // 'password' => 'required|min:6|confirmed',
             'password' => 'required|min:6',
         ]);
@@ -85,28 +87,41 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        $user = User::create([
-            'username' => $data['username'],
-            'email' => $data['email'],
-            'password' => bcrypt($data['password']),
-            'ver_token' => str_random(20),
-            'verif' => 0,
+      $user = User::create([
+          'username' => $data['username'],
+          'email' => $data['email'],
+          'password' => bcrypt($data['password']),
+          'ver_token' => str_random(20),
+          'stat' => 0,
+          'level' => 1,
+      ]);
+      // dd("sini");
+      if($data['level']==1){
+        $customer = Customer::create([
+            'user_id' => $user->id,
         ]);
+      }
+      if($data['level']==2){
+        $agent = Agent::create([
+            'user_id' => $user->id,
+        ]);
+      }
         //mengirim email
         Mail::to($user->email)->send(new userRegistered($user));
     }
     protected function verify_register($ver_token, $id)
     {
-        $customers = User::find($id);
+        $user = User::find($id);
+        // dd($user);
         //Uji Token Verifikasi
-        if($customers->ver_token != $ver_token){
+        if($user->ver_token != $ver_token){
             return redirect('login')->with('warning','Verifikasi Email Tidak Cocok');
         }
         //Status User Jadi 1
-        $customers->stat = 1;
-        $customers->save();
+        $user->stat = 1;
+        $user->save();
         //Login
-        $this->guard()->login($customers);
+        $this->guard()->login($user);
         return redirect($id . "/userdetail");
     }
 }
