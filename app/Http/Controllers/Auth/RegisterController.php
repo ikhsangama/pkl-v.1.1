@@ -87,13 +87,14 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+      // dd($data['level']);
       $user = User::create([
           'username' => $data['username'],
           'email' => $data['email'],
           'password' => bcrypt($data['password']),
           'ver_token' => str_random(20),
           'stat' => 0,
-          'level' => 1,
+          'level' => $data['level'],
       ]);
       // dd("sini");
       if($data['level']==1){

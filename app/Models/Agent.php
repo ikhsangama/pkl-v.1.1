@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Agent extends Model
 {
-  protected $table = 'agents';
+  // protected $table = 'agents';
   /**
    * The attributes that are mass assignable.
    *
@@ -16,7 +16,14 @@ class Agent extends Model
       'user_id',
   ];
 
-    public function paket(){
-    	return $this->belongsTo('App\Models\Paket','id','agents_id');
-    }
+  //ikhsan
+	public function user(){
+		return $this->belongsTo('App\User','user_id');
+	}
+  //lina
+  public function paket(){
+  	return $this->belongsTo('App\Models\Paket','id','agents_id');
+  }
+
+
 }

@@ -14,15 +14,15 @@
 //ADMIN, LEVEL 0
 Route::group(['middleware' => 'admin'], function(){
 	//Dashboard
-	Route::get('/dashboard', 'DashboardController@index');
+	Route::get('/dash', 'Admin\DashboardController@index');
 
 	//CRUD Agent
-	Route::get('/agent', 'AgentsController@showAll');
-	Route::get('/agent/{id}','AgentsController@show');
-	Route::get('/agentcreate','AgentsController@createByAdmin');
-	Route::post('/agent','AgentsController@storeByAdmin');
-	Route::post('/agentupdate/{id}','AgentsController@edit');
-	Route::get('/agentdelete/{id}','AgentsController@destroy');
+	Route::get('/dash/agent', 'Admin\AgentsController@showAll');
+	Route::get('/dash/agent/{id}','Admin\AgentsController@show');
+	Route::get('/dash/agentcreate','Admin\AgentsController@createByAdmin');
+	Route::post('/dash/agent','Admin\AgentsController@storeByAdmin');
+	Route::post('/dash/agentupdate/{id}','Admin\AgentsController@edit');
+	Route::get('/dash/agentdelete/{id}','Admin\AgentsController@destroy');
 
 	//CRUD Customer
 	Route::get('/customer', 'CustomerController@showAll');
@@ -39,8 +39,8 @@ Route::group(['middleware' => 'admin'], function(){
 //CUSTOMER, LEVEL 1
 Route::group(['middleware' => 'customer'], function(){
 	//lengkapiDataSetelahVerif
-	Route::get('/{id}/customer/completing', 'LengkapiDataCustomerController@edit');
-	Route::PUT('/{id}/customer', 'LengkapiDataCustomerController@update');
+	Route::get('/{id}/customer/completing', 'Customer\LengkapiDataController@edit');
+	Route::PUT('/{id}/customer', 'Customer\LengkapiDataController@update');
 
 	// Manage Profile
 	Route::get('/{id}/customer/showedit', 'EditProfilController@edit');
@@ -50,8 +50,8 @@ Route::group(['middleware' => 'customer'], function(){
 //AGENT, LEVEL 2
 Route::group(['middleware' => 'agent'], function(){
 	//lengkapiDataSetelahVerif
-	Route::get('/{id}/agent/completing', 'LengkapiDataAgentController@edit');
-	Route::PUT('/{id}/agent', 'LengkapiDataAgentController@update');
+	Route::get('/{id}/agent/completing', 'Agent\LengkapiDataController@edit');
+	Route::PUT('/{id}/agent', 'Agent\LengkapiDataController@update');
 
 	// Manage Profile
 	// Route::get('/{id}/manageprofile', 'EditProfilController@edit');

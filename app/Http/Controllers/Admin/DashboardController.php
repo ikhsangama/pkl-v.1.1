@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 
@@ -14,6 +14,11 @@ use Illuminate\Support\Facades\DB;
 use App\Models\User;
 
 class DashboardController extends BaseController {
+
+  public function __construct(){
+    $this->middleware('auth');
+    $this->middleware('admin');
+  }
 
   /**
    * Display a listing of the resource.

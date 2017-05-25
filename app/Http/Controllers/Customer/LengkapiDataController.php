@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Customer;
 
 use App\User;
 use App\Models\Customer;
@@ -10,7 +10,7 @@ use App\Http\Controllers\Controller;
 //Tambah
 // use App\Http\Request;
 
-class LengkapiDataCustomerController extends Controller
+class LengkapiDataController extends Controller
 {
 
   public function __construct(){

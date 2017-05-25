@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 // use Illuminate\Http\Request;
 
@@ -20,7 +20,20 @@ use App\Http\Requests;
 use Storage;
 use File;
 
+
 class AgentsController extends Controller {
+
+  public function __construct(){
+
+    $this->middleware('auth');
+    $this->middleware('admin');
+  }
+
+  public function showAll()
+  {
+    $data = Agent::all();
+    return view('admin.agent')->with('data',$data);
+  }
 
   /**
    * Display a listing of the resource.
@@ -119,12 +132,6 @@ class AgentsController extends Controller {
 
     $agent->save();
     return redirect ('/agent');
-  }
-
-  public function showAll()
-  {
-    $data=Agent::all();
-    return view('admin.agent')->with('data',$data);
   }
 
   public function show($id)

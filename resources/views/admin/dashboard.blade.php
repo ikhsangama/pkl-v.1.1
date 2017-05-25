@@ -86,18 +86,18 @@
                   <li class="text-muted menu-title">Navigation</li>
 
                     <li>
-                        <a href="dashboard" class="waves-effect active"><i class="zmdi zmdi-view-dashboard"></i> <span> Dashboard </span> </a>
+                        <a href="/dash" class="waves-effect active"><i class="zmdi zmdi-view-dashboard"></i> <span> Dashboard </span> </a>
                     </li>
 
                     <li>
-                        <a href="product" class="waves-effect"><i class="zmdi zmdi-cloud-box"></i> <span> Product </span> </a>
+                        <a href="/dash/product" class="waves-effect"><i class="zmdi zmdi-cloud-box"></i> <span> Product </span> </a>
                     </li>
 
                     <li>
-                        <a href="agent" class="waves-effect"><i class="zmdi zmdi-account-box"></i> <span> Agent </span> </a>
+                        <a href="/dash/agent" class="waves-effect"><i class="zmdi zmdi-account-box"></i> <span> Agent </span> </a>
 
                     <li>
-                        <a href="customer" class="waves-effect"><i class="zmdi zmdi-account-box-o"></i><span> Customer </span> </a>
+                        <a href="/dash/customer" class="waves-effect"><i class="zmdi zmdi-account-box-o"></i><span> Customer </span> </a>
 
                 </ul>
                 <div class="clearfix"></div>
