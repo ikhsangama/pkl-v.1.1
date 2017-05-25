@@ -4,14 +4,13 @@ namespace App\Http\Controllers;
 
 use App\User;
 use App\Models\Customer;
-use App\Models\Agent;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 //Tambah
 // use App\Http\Request;
 
-class LengkapiDataController extends Controller
+class LengkapiDataCustomerController extends Controller
 {
 
   public function __construct(){
@@ -69,12 +68,12 @@ class LengkapiDataController extends Controller
     public function edit($id)
     {
         // dd($id);
-          $customer = User::find($id);
+          $user = User::find($id);
 
-          if(!$customer){
+          if(!$user){
             abort(404);
           }
-          return view('lengkapidata', ['customer' => $customer]);
+          return view('customer.lengkapidata', ['user' => $user]);
     }
 
     /**
@@ -95,18 +94,22 @@ class LengkapiDataController extends Controller
             'phone'      => 'required|between:10,12',
             'gender'     => 'required',
         ]);
-        $user_id = $id;
-        // dd(User::find($id), Customer::find($user_id));
-        // $user_id = $id;
-        $customer = Customer::find($user_id);
+
+        $user_id = User::find($id)->id;
+        $level = User::find($id)->level;
         // dd($customer = Customer::find($user_id));
-        // dd($customer);
-        $customer->firstname = $request->firstname;
-        $customer->lastname  = $request->lastname;
-        $customer->alamat    = $request->alamat;
-        $customer->phone     = $request->phone;
-        $customer->gender    = $request->gender;
-        $customer->save();
+        if($level==1)
+        {
+          $customer = Customer::where('user_id', $user_id)->first();
+          // dd($customer, Customer::find(4));
+          $customer->firstname = $request->firstname;
+          $customer->lastname  = $request->lastname;
+          $customer->alamat    = $request->alamat;
+          $customer->phone     = $request->phone;
+          $customer->gender    = $request->gender;
+          $customer->save();
+        }
+
         return redirect ('/');
     }
 

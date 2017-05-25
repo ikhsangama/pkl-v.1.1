@@ -122,6 +122,12 @@ class RegisterController extends Controller
         $user->save();
         //Login
         $this->guard()->login($user);
-        return redirect($id . "/userdetail");
+        if($user->level == 1){
+          return redirect($id . "/customer/completing");
+        }
+        if($user->level == 2){
+          return redirect($id . "/agent/completing");
+        }
+
     }
 }

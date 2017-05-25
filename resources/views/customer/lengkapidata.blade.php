@@ -42,10 +42,10 @@
       </div>
         <div class="m-t-40 card-box">
             <div class="text-center">
-                <h4 class="text-uppercase font-bold m-b-0">Lengkapi Data : {{$customer->username}}</h4>
+                <h4 class="text-uppercase font-bold m-b-0">Lengkapi Data : {{$user->username}}</h4>
             </div>
             <div class="panel-body">
-                <form class="form-horizontal m-t-20" method="POST" action="/{{$customer->id}}">
+                <form class="form-horizontal m-t-20" method="POST" action="/{{$user->id}}/customer">
 
                     <div class="form-group ">
                         <div class="row">

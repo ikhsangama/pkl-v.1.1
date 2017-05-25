@@ -11,6 +11,7 @@
 |
 */
 
+//ADMIN, LEVEL 0
 Route::group(['middleware' => 'admin'], function(){
 	//Dashboard
 	Route::get('/dashboard', 'DashboardController@index');
@@ -35,14 +36,26 @@ Route::group(['middleware' => 'admin'], function(){
 	Route::get('/product', 'PaketController@showAll');
 });
 
+//CUSTOMER, LEVEL 1
 Route::group(['middleware' => 'customer'], function(){
 	//lengkapiDataSetelahVerif
-	Route::get('/{id}/userdetail', 'LengkapiDataController@edit');
-	Route::PUT('/{id}', 'LengkapiDataController@update');
+	Route::get('/{id}/customer/completing', 'LengkapiDataCustomerController@edit');
+	Route::PUT('/{id}/customer', 'LengkapiDataCustomerController@update');
 
 	// Manage Profile
-	Route::get('/{id}/manageprofile', 'EditProfilController@edit');
+	Route::get('/{id}/customer/showedit', 'EditProfilController@edit');
 	Route::PUT('/{id}/update', 'EditProfilController@update');
+});
+
+//AGENT, LEVEL 2
+Route::group(['middleware' => 'agent'], function(){
+	//lengkapiDataSetelahVerif
+	Route::get('/{id}/agent/completing', 'LengkapiDataAgentController@edit');
+	Route::PUT('/{id}/agent', 'LengkapiDataAgentController@update');
+
+	// Manage Profile
+	// Route::get('/{id}/manageprofile', 'EditProfilController@edit');
+	// Route::PUT('/{id}/update', 'EditProfilController@update');
 });
 
 Route::get('/', 'WelcomeController@index');

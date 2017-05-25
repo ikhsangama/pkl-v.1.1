@@ -68,8 +68,16 @@ class LoginController extends Controller
             }
             //Menguji Gender, tanda sudah melengkapi atau belum
             if (Auth::user()->gender==NULL){
+              if(Auth::user()->level==1){
                 $this->sendLoginResponse($request);
-                return redirect(Auth::user()->id . "/userdetail");
+                return redirect(Auth::user()->id . "/customer/completing");
+              }
+            }
+            if (Auth::user()->gender==NULL){
+              if(Auth::user()->level==2){
+                $this->sendLoginResponse($request);
+                return redirect(Auth::user()->id . "/agent/completing");
+              }
             }
             return $this->sendLoginResponse($request);
         }
