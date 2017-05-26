@@ -20,6 +20,11 @@ use File;
 
 class CustomersController extends BaseController {
 
+  public function __construct(){
+    $this->middleware('auth');
+    $this->middleware('admin');
+  }
+
   /**
    * Display a listing of the resource.
    *
@@ -56,7 +61,6 @@ class CustomersController extends BaseController {
   public function createByAdmin()
   {
     return view('admin.createCustomer');
-
   }
 
 

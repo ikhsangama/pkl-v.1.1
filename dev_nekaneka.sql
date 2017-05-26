@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: May 24, 2017 at 08:26 PM
+-- Generation Time: May 26, 2017 at 09:50 PM
 -- Server version: 10.1.16-MariaDB
 -- PHP Version: 7.0.9
 
@@ -91,6 +91,14 @@ CREATE TABLE `agents` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+--
+-- Dumping data for table `agents`
+--
+
+INSERT INTO `agents` (`id`, `user_id`, `fullname`, `address`, `city`, `province`, `gender`, `tanggallahir`, `bahasa`, `foto`, `multidokumen`, `remember_token`, `created_at`, `updated_at`) VALUES
+(1, 6, 'a', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2017-05-25 05:08:21', '2017-05-25 05:08:21'),
+(10, 20, 'ikhsan gama', 'Jl Tejosari Raya Perum Grafika Citra Sentosa B1/2', '1', '2', 'female', '2017-05-01', 'ID', 'agent5_diri.png', 'agent5_KTP.png', NULL, '2017-05-26 19:47:35', '2017-05-26 19:47:35');
+
 -- --------------------------------------------------------
 
 --
@@ -131,13 +139,6 @@ CREATE TABLE `customers` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci ROW_FORMAT=COMPACT;
-
---
--- Dumping data for table `customers`
---
-
-INSERT INTO `customers` (`id`, `user_id`, `nomorid`, `firstname`, `lastname`, `alamat`, `phone`, `gender`, `tanggallahir`, `nationality`, `remember_token`, `created_at`, `updated_at`) VALUES
-(4, 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2017-05-24 17:27:32', '2017-05-24 17:27:32');
 
 -- --------------------------------------------------------
 
@@ -68845,7 +68846,7 @@ CREATE TABLE `users` (
   `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `password` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `stat` tinyint(1) NOT NULL DEFAULT '0',
-  `level` tinyint(1) NOT NULL DEFAULT '1',
+  `level` tinyint(1) DEFAULT NULL,
   `ver_token` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
   `remember_token` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -68857,7 +68858,10 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `email`, `password`, `stat`, `level`, `ver_token`, `remember_token`, `created_at`, `updated_at`) VALUES
-(5, 'admin', 'admin@email.com', '$2y$10$N61F8TiiR4ITzO4HLfjBReT0r.qqIUErXN0X3pjrf90MJHVR6EK66', 1, 1, 'JRUzGjs7pzWqxggJEQj6', 'kvO3ZNI3Okvsw3XBaqqgrmkmJJb05iK0ofzHGQGt5gLvapAY6MQfGe9DEW9n', '2017-05-24 17:27:32', '2017-05-24 17:28:32');
+(5, 'admin', 'admin@email.com', '$2y$10$N61F8TiiR4ITzO4HLfjBReT0r.qqIUErXN0X3pjrf90MJHVR6EK66', 1, 0, 'JRUzGjs7pzWqxggJEQj6', 'kuIIOdHEtTf6dE4jRzmLHzVX63P59nfhXmoEcRiAlYic2kjsgGAJRylTITVy', '2017-05-24 17:27:32', '2017-05-25 14:35:03'),
+(6, 'agent1', 'agent1@email.com', '$2y$10$ArXX2JbxMBIO1qsIVJjRCO3L3Nwza8KIxrRTx7Q3xjFXNR4b0AxzC', 1, 2, '9YnZjMCY9oW11Dbz4NgE', 'ZACqS08a2jTZrqHiJAnk2SZI7Px5UTeVALqDOLzOednc3TWhbpvVerssCLNH', '2017-05-25 05:08:21', '2017-05-25 14:56:51'),
+(10, 'agent3', 'agent3@email.com', '$2y$10$BJxCSqmywmBKgaO.pDeW.uSb3GhUvUAHj0s4HAvZBxck52.mvmVKq', 0, 1, 'KOSXHNekO9fUQhJ7Y2dD', NULL, '2017-05-25 15:27:23', '2017-05-25 15:27:23'),
+(20, 'agent5', 'agent5@email.com', '$2y$10$O8qpLaXQzwLGsGG3bLvre.sC/b2GTwP/MrKDn6jZe/0J4kSlfo/p.', 1, 2, 'bYlbeWKpZa225B6eSSDt', NULL, '2017-05-26 19:47:35', '2017-05-26 19:47:35');
 
 -- --------------------------------------------------------
 
@@ -69000,7 +69004,7 @@ ALTER TABLE `adventures`
 -- AUTO_INCREMENT for table `agents`
 --
 ALTER TABLE `agents`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `booking`
 --
@@ -69010,7 +69014,7 @@ ALTER TABLE `booking`
 -- AUTO_INCREMENT for table `customers`
 --
 ALTER TABLE `customers`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `feedback`
 --
@@ -69050,7 +69054,7 @@ ALTER TABLE `service_booking`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 --
 -- AUTO_INCREMENT for table `usersss`
 --

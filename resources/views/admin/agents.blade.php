@@ -125,7 +125,7 @@
                                     <div class="col-sm-6">
                                         <div class="m-b-30">
                                             <a href="agentcreate" class="btn btn-primary waves-effect waves-light">Add Agent <i class="fa fa-plus"></i></a>
-                                            <a href="agent" class="btn btn-primary waves-effect waves-light">List Agent <i class="fa fa-list"></i></a>
+                                            <a href="agents" class="btn btn-primary waves-effect waves-light">List Agent <i class="fa fa-list"></i></a>
                                         </div>
                                     </div>
                                 </div>

@@ -90,14 +90,14 @@
                     </li>
 
                     <li>
-                        <a href="product" class="waves-effect"><i class="zmdi zmdi-cloud-box"></i> <span> Product </span> </a>
+                        <a href="/dash/products" class="waves-effect"><i class="zmdi zmdi-cloud-box"></i> <span> Products </span> </a>
                     </li>
 
                     <li>
-                        <a href="agent" class="waves-effect active"><i class="zmdi zmdi-account-box"></i> <span> Agent </span> </a>
+                        <a href="/dash/agents" class="waves-effect active"><i class="zmdi zmdi-account-box"></i> <span> Agents </span> </a>
 
                     <li>
-                        <a href="customer" class="waves-effect"><i class="zmdi zmdi-account-box-o"></i><span> Customer </span> </a>
+                        <a href="/dash/customers" class="waves-effect"><i class="zmdi zmdi-account-box-o"></i><span> Customers </span> </a>
 
                 </ul>
                 <div class="clearfix"></div>
@@ -125,7 +125,7 @@
                                     <div class="col-sm-6">
                                         <div class="m-b-30">
                                             <a href="agentcreate" class="btn btn-primary waves-effect waves-light">Add Agent <i class="fa fa-plus"></i></a>
-                                            <a href="agent" class="btn btn-primary waves-effect waves-light">List Agent <i class="fa fa-list"></i></a>
+                                            <a href="/dash/agents" class="btn btn-primary waves-effect waves-light">List Agent <i class="fa fa-list"></i></a>
                                         </div>
                                     </div>
                                 </div>
@@ -136,7 +136,7 @@
                             </div>
 								<div class="col-sm-offset-2 col-sm-7">
 									<form class="form-horizontal" role="form" method="post"
-                                    action="{{ URL('/agent')}}" accept-charset="UTF-8" enctype="multipart/form-data">
+                                    action="{{ URL('dash/agents')}}" accept-charset="UTF-8" enctype="multipart/form-data">
                                     <!-- {{ csrf_field() }} -->
                                         <div class="form-group">
                                             <label class="col-md-2 control-label">Username</label>
@@ -205,12 +205,6 @@
                                                     <input type="radio" name="gender" id="female" value="female">
                                                     <label for="female">
                                                         Female
-                                                    </label>
-                                                </div>
-                                                <div class="radio radio-custom">
-                                                    <input type="radio" name="gender" id="other" value="other">
-                                                    <label for="other">
-                                                        Other
                                                     </label>
                                                 </div>
                                             </div>

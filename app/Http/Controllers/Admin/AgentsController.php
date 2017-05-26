@@ -24,14 +24,13 @@ use File;
 class AgentsController extends BaseController {
 
   public function __construct(){
-
     $this->middleware('auth');
     $this->middleware('admin');
   }
 
   public function showAll()
   {
-    $user_id = DB::table('users')->where('level', 2)->pluck('id');
+    // $user_id = DB::table('users')->where('level', 2)->pluck('id');
     $agents = DB::table('agents')->leftJoin('users', 'agents.user_id', '=', 'users.id')->where('level', 2)->get();
     //hasilnya ID user
     // $agents = DB::table('users')->leftJoin('agents', 'users.id','=','agents.user_id')->where('level', 2)->get();
@@ -40,6 +39,61 @@ class AgentsController extends BaseController {
     return view('admin.agents',[
       'agents'=>$agents,
     ]);
+  }
+
+  /**
+   * Store a newly created resource in storage.
+   *
+   * @return Response
+   */
+  public function createByAdmin()
+  {
+    return view('admin.createAgent');
+  }
+
+  public function storeByAdmin(Request $request)
+  {
+    // $this->validate($request, [
+  // 'nama' => 'required',
+    // 'username' => 'required|unique',
+  // 'email' => 'required|email|max:35|unique:pengguna',
+  // 'password' => 'required|min:3|confirmed',
+  // 'fotodiri' => 'mimes:jpeg,jpg,png|max:4000',
+  // ]);
+
+    $user = new User;
+    $user->username = $request->username;
+    $user->email = $request->email;
+    $user->password = bcrypt($request->password);
+    $user->stat = 1;
+    $user->level = 2;
+    $user->ver_token = str_random(20);
+    $user->save();
+
+    if($user->level == 2){
+      $agent = new Agent;
+      $agent->user_id = $user->id;
+      $agent->fullname = $request->fullname;
+      $agent->address = $request->address;
+      $agent->city = $request->city;
+      $agent->province = $request->province;
+      $agent->gender = $request->gender;
+      $agent->bahasa = $request->bahasa;
+      $agent->tanggallahir = $request->tanggallahir;
+
+      //simpan gambar DIRI
+      $fileDIRI = $request->username. '_diri.png';
+      $request->file('fotoktp')->storeAs("public\diri",$fileDIRI);
+      $agent->foto = $fileDIRI;
+
+      //simpan gambar KTP
+      $fileKTP = $request->username. '_KTP.png';
+      $request->file('fotodiri')->storeAs("public\KTP",$fileKTP);
+      $agent->multidokumen = $fileKTP;
+
+      $agent->save();
+    }
+    return redirect ('/dash/agents');
   }
 
   /**
@@ -70,18 +124,6 @@ class AgentsController extends BaseController {
     return view('agents_create', $data);
   }
 
-  /**
-   * Store a newly created resource in storage.
-   *
-   * @return Response
-   */
-  public function createByAdmin()
-  {
-    return view('admin.createAgent');
-
-  }
-
-
   public function store($id, Request $request)
   {
     $agents = new Agents();
@@ -104,42 +146,6 @@ class AgentsController extends BaseController {
     dd('submit');
   }
 
-  public function storeByAdmin(Request $request)
-  {
-    $this->validate($request, [
-  // 'nama' => 'required',
-    'username' => 'required|unique',
-  // 'email' => 'required|email|max:35|unique:pengguna',
-  // 'password' => 'required|min:3|confirmed',
-  'fotodiri' => 'mimes:jpeg,jpg,png|max:4000',
-  ]);
-
-    $agent = new Agent;
-    $agent->username = $request->username;
-    $agent->email = $request->email;
-    $agent->password = $request->password;
-    $agent->fullname = $request->fullname;
-    $agent->address = $request->address;
-    $agent->city = $request->city;
-    $agent->province = $request->province;
-    $agent->gender = $request->gender;
-    $agent->bahasa = $request->bahasa;
-    $agent->tanggallahir = $request->tanggallahir;
-    $agent->verif_stat = 1;
-
-    //simpan gambar DIRI
-    $fileDIRI = $request->username. '_diri.png';
-    $request->file('fotoktp')->storeAs("public\diri",$fileDIRI);
-    $agent->foto = $fileDIRI;
-
-    //simpan gambar KTP
-    $fileKTP = $request->username. '_KTP.png';
-    $request->file('fotodiri')->storeAs("public\KTP",$fileKTP);
-    $agent->multidokumen = $fileKTP;
-
-    $agent->save();
-    return redirect ('/agent');
-  }
 
   public function show($id)
   {
