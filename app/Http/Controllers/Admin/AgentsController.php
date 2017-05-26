@@ -4,15 +4,15 @@ namespace App\Http\Controllers\Admin;
 
 // use Illuminate\Http\Request;
 
-// use Illuminate\Foundation\Bus\DispatchesJobs;
-// use Illuminate\Routing\Controller as BaseController;
-// use Illuminate\Foundation\Validation\ValidatesRequests;
-// use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
-// use Illuminate\Foundation\Auth\Access\AuthorizesResources;
-// use Illuminate\Support\Facades\DB;
-// use App\Http\Middleware\VerifyCsrfToken;
+use Illuminate\Foundation\Bus\DispatchesJobs;
+use Illuminate\Routing\Controller as BaseController;
+use Illuminate\Foundation\Validation\ValidatesRequests;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\Foundation\Auth\Access\AuthorizesResources;
+use Illuminate\Support\Facades\DB;
+use App\Http\Middleware\VerifyCsrfToken;
 
-use User;
+use App\User;
 use App\Models\Agent;
 use Illuminate\Http\Request;
 
@@ -21,7 +21,7 @@ use Storage;
 use File;
 
 
-class AgentsController extends Controller {
+class AgentsController extends BaseController {
 
   public function __construct(){
 
@@ -31,8 +31,15 @@ class AgentsController extends Controller {
 
   public function showAll()
   {
-    $data = Agent::all();
-    return view('admin.agent')->with('data',$data);
+    $user_id = DB::table('users')->where('level', 2)->pluck('id');
+    $agents = DB::table('agents')->leftJoin('users', 'agents.user_id', '=', 'users.id')->where('level', 2)->get();
+    //hasilnya ID user
+    // $agents = DB::table('users')->leftJoin('agents', 'users.id','=','agents.user_id')->where('level', 2)->get();
+    //hasilnya primary ID agent
+    // dd($agents);
+    return view('admin.agents',[
+      'agents'=>$agents,
+    ]);
   }
 
   /**

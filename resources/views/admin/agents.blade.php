@@ -27,7 +27,7 @@
                         </button>
                     </li>
                     <li>
-                        <h4 class="page-title">Agent</h4>
+                        <h4 class="page-title">Agents</h4>
                     </li>
                 </ul>
 
@@ -86,18 +86,18 @@
                   <li class="text-muted menu-title">Navigation</li>
 
                     <li>
-                        <a href="dashboard" class="waves-effect"><i class="zmdi zmdi-view-dashboard"></i> <span> Dashboard </span> </a>
+                        <a href="/dash" class="waves-effect"><i class="zmdi zmdi-view-dashboard"></i> <span> Dashboard </span> </a>
                     </li>
 
                     <li>
-                        <a href="product" class="waves-effect"><i class="zmdi zmdi-cloud-box"></i> <span> Product </span> </a>
+                        <a href="/dash/products" class="waves-effect"><i class="zmdi zmdi-cloud-box"></i> <span> Products </span> </a>
                     </li>
 
                     <li>
-                        <a href="agent" class="waves-effect active"><i class="zmdi zmdi-account-box"></i> <span> Agent </span> </a>
+                        <a href="/dash/agents" class="waves-effect active"><i class="zmdi zmdi-account-box"></i> <span> Agents </span> </a>
 
                     <li>
-                        <a href="customer" class="waves-effect"><i class="zmdi zmdi-account-box-o"></i><span> Customer </span> </a>
+                        <a href="/dash/customers" class="waves-effect"><i class="zmdi zmdi-account-box-o"></i><span> Customers </span> </a>
 
                 </ul>
                 <div class="clearfix"></div>
@@ -143,16 +143,16 @@
                                         </thead>
                                         <tbody>
                                             <tr class="gradeX">
-                                            @foreach($data as $row)
-                                                <td>{{$row->id}}</td>
-                                                <td>{{$row->email}}</td>
-                                                <td>{{$row->username}}</td>
-                                                <td>{{$row->fullname}}</td>
-                                                <td>{{$row->address}}</td>
+                                              @foreach($agents as $agent)
+                                                <td>{{$agent->id }}</td> <!-- masih bukan id agent -->
+                                                <td>{{$agent->email }}</td>
+                                                <td>{{$agent->username }}</td>
+                                                <td>{{$agent->fullname }}</td>
+                                                <td>{{$agent->address }}</td>
                                                 <td class="actions">
-                                                    <a onclick="showagent({{$row->id}})" href="#" class=""><i class="fa fa-eye"></i></a>
-                                                    <a onclick="editagent({{$row->id}})" href="#" class="on-default edit-row"><i class="fa fa-pencil"></i></a>
-                                                    <a onclick="deleteagent({{$row->id}})" href="#" class="on-default remove-row"><i class="fa fa-trash-o"></i></a>
+                                                  <a onclick="showagent({{$agent->id}})" href="#" class=""><i class="fa fa-eye"></i></a>
+                                                  <a onclick="editagent({{$agent->id}})" href="#" class="on-default edit-row"><i class="fa fa-pencil"></i></a>
+                                                  <a onclick="deleteagent({{$agent->id}})" href="#" class="on-default remove-row"><i class="fa fa-trash-o"></i></a>
                                                 </td>
                                             </tr>
                                             @endforeach
@@ -167,7 +167,7 @@
                                     <div class="modal-content">
                                         <div class="modal-header">
                                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                                            <h4 class="modal-title">Agent</h4>
+                                            <h4 class="modal-title">Agents</h4>
                                         </div>
                                         <div class="modal-body">
                                             <div class="user-box">

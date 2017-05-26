@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 
@@ -18,7 +18,7 @@ use App\Http\Requests;
 use Storage;
 use File;
 
-class CustomerController extends Controller {
+class CustomersController extends BaseController {
 
   /**
    * Display a listing of the resource.
@@ -112,8 +112,9 @@ class CustomerController extends Controller {
 
   public function showAll()
   {
-    $data = Customer::where('level',1)->get();
-    return view('admin.customer')->with('data',$data);
+    // $customers = Customer::all();
+    $customers = DB::table('customers')->leftJoin('users', 'customers.user_id', '=', 'users.id')->where('level', 1)->get(); //hasilnya ID user
+    return view('admin.customers')->with('data',$customers);
   }
 
   /**

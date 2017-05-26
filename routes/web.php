@@ -17,20 +17,20 @@ Route::group(['middleware' => 'admin'], function(){
 	Route::get('/dash', 'Admin\DashboardController@index');
 
 	//CRUD Agent
-	Route::get('/dash/agent', 'Admin\AgentsController@showAll');
+	Route::get('/dash/agents', 'Admin\AgentsController@showAll');
 	Route::get('/dash/agent/{id}','Admin\AgentsController@show');
 	Route::get('/dash/agentcreate','Admin\AgentsController@createByAdmin');
-	Route::post('/dash/agent','Admin\AgentsController@storeByAdmin');
+	Route::post('/dash/agents','Admin\AgentsController@storeByAdmin');
 	Route::post('/dash/agentupdate/{id}','Admin\AgentsController@edit');
 	Route::get('/dash/agentdelete/{id}','Admin\AgentsController@destroy');
 
 	//CRUD Customer
-	Route::get('/customer', 'CustomerController@showAll');
-	Route::get('/customer/{id}', 'CustomerController@show');
-	Route::get('/customercreate/', 'CustomerController@createByAdmin');
-	Route::post('/customer/', 'CustomerController@storeByAdmin');
-	Route::post('/customerupdate/{id}', 'CustomerController@edit');
-	Route::get('/customerdelete/{id}', 'CustomerController@destroy');
+	Route::get('/dash/customers', 'Admin\CustomersController@showAll');
+	Route::get('/dash/customer/{id}', 'Admin\CustomersController@show');
+	Route::get('/dash/customercreate/', 'Admin\CustomersController@createByAdmin');
+	Route::post('/dash/customers', 'Admin\CustomersController@storeByAdmin');
+	Route::post('/dash/customerupdate/{id}', 'Admin\CustomersController@edit');
+	Route::get('/dash/customerdelete/{id}', 'Admin\CustomersController@destroy');
 
 	//CRUD Product
 	Route::get('/product', 'PaketController@showAll');

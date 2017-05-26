@@ -11,7 +11,8 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesResources;
 use Illuminate\Support\Facades\DB;
 
-use App\Models\User;
+use App\User;
+use App\Models\Customer;
 
 class DashboardController extends BaseController {
 

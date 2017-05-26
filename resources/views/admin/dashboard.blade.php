@@ -90,14 +90,14 @@
                     </li>
 
                     <li>
-                        <a href="/dash/product" class="waves-effect"><i class="zmdi zmdi-cloud-box"></i> <span> Product </span> </a>
+                        <a href="/dash/products" class="waves-effect"><i class="zmdi zmdi-cloud-box"></i> <span> Products </span> </a>
                     </li>
 
                     <li>
-                        <a href="/dash/agent" class="waves-effect"><i class="zmdi zmdi-account-box"></i> <span> Agent </span> </a>
+                        <a href="/dash/agents" class="waves-effect"><i class="zmdi zmdi-account-box"></i> <span> Agents </span> </a>
 
                     <li>
-                        <a href="/dash/customer" class="waves-effect"><i class="zmdi zmdi-account-box-o"></i><span> Customer </span> </a>
+                        <a href="/dash/customers" class="waves-effect"><i class="zmdi zmdi-account-box-o"></i><span> Customers </span> </a>
 
                 </ul>
                 <div class="clearfix"></div>
