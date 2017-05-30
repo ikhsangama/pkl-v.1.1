@@ -43,8 +43,8 @@ Route::group(['middleware' => 'customer'], function(){
 	Route::PUT('/{id}/customer', 'Customer\LengkapiDataController@update');
 
 	// Manage Profile
-	Route::get('/{id}/customer/showedit', 'EditProfilController@edit');
-	Route::PUT('/{id}/update', 'EditProfilController@update');
+	Route::get('/{id}/customer/showedit', 'Customer\EditProfilController@edit');
+	Route::PUT('/{id}/update', 'Customer\EditProfilController@update');
 });
 
 //AGENT, LEVEL 2

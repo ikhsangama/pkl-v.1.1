@@ -1,13 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Customer;
 
 use App\User;
+use App\Models\Customer;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-
-//Tambah
-// use App\Http\Request;
 
 class EditProfilController extends Controller
 {
@@ -92,11 +90,21 @@ class EditProfilController extends Controller
             'phone'     => 'required|between:10,12',
             'alamat'    => 'required|max:80',
         ]);
-        $customer = User::find($id);
-        $customer->username = $request->username;
-        $customer->email    = $request->email;
-        $customer->phone    = $request->phone;
-        $customer->alamat   = $request->alamat;
+
+        $user = User::find($id);
+        $user->username = $request->username;
+        $user->email    = $request->email;
+
+        if ($user->level == 1){
+          $user_id = $user->id;
+          $customer = Customer :: where('user_id', $user_id)->first();
+          // dd($user, $customer);
+          $customer->phone = $request->phone;
+          $customer->alamat   = $request->alamat;
+        }
+        // $customer->phone    = $request->phone;
+        // $customer->alamat   = $request->alamat;
+        $user->save();
         $customer->save();
         return redirect ('/');
     }
