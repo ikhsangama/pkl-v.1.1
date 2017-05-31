@@ -73,7 +73,7 @@ class LoginController extends Controller
             //Menguji Level dan Gender, tanda sudah melengkapi atau belum
             if (Auth::user()->level==1){
               $customer = Customer::where('user_id', $user_id)->first();
-              dd($user_id,$customer);
+              // dd($user_id,$customer);
               if($customer->gender==NULL){
                 $this->sendLoginResponse($request);
                 return redirect(Auth::user()->id . "/customer/completing");
@@ -81,7 +81,7 @@ class LoginController extends Controller
             }
             if (Auth::user()->level==2){
               $agent = Agent::where('user_id', $user_id)->first();
-                            dd($user_id,Agent::find(1));
+                            // dd($user_id,Agent::find(1));
               if($agent->gender==NULL){
                 $this->sendLoginResponse($request);
                 return redirect(Auth::user()->id . "/agent/completing");

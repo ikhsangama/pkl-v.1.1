@@ -53,26 +53,30 @@
         </ul>
 @if (Auth::guest())
         <ul class="nav navbar-nav navbar-right">
-          <li><a href="/login"><span class="glyphicon glyphicon-lock"></span> Sign In /</a></li>
+          <li><a href="/login"><span class="glyphicon glyphicon-lock"></span> Sign In </a></li>
           <li><a href="/register"><span class="glyphicon glyphicon-edit"></span> Register</a></li>
         </ul>
 
 @elseif(Auth::user())
 @if(Auth::user()->isAdmin(true))
-      <a href="/dash">Dashboard</a>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="/dash">Dashboard</a></li>
 @endif
-        <div class="row">
-          <a class="logout" href="{{ url('/logout') }}"
-              onclick="event.preventDefault();
-                       document.getElementById('logout-form').submit();">
-              Logout
-          </a>
-        </div>
-        <form id="logout-form" action="{{ url('/logout') }}" method="POST">
-          {{ csrf_field() }}
-        </form>
-
-
+@if(Auth::user()->isCustomer(true))
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="{{$query2}}/customer/showedit">Profile</a></li>
+@endif
+          <li>
+            <a href="{{ url('/logout') }}"
+                onclick="event.preventDefault();
+                         document.getElementById('logout-form').submit();">
+                Logout
+            </a>
+          </li>
+          <form id="logout-form" action="{{ url('/logout') }}" method="POST">
+            {{ csrf_field() }}
+          </form>
+        </ul>
 @endif
       </div>
     </nav>

@@ -89,7 +89,7 @@
                         <br>
                         <div class="row">
                             <div class="col-xs-12 col-sm-12 col-md-12">
-                                <textarea class="form-control" rows="5" name="alamat" required></textarea>
+                                <textarea class="form-control" rows="5" name="alamat" value"{{$customer->username}}" required>{{$customer->username}}</textarea>
                                 <!-- validation-->
                                 @if ($errors->has('alamat'))
                                 <!-- <div class="container red-text text accent-3"> -->

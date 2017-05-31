@@ -72,10 +72,15 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="text-custom">
+                        <a href="{{ url('/logout') }}" class="text-custom"
+                        onclick="event.preventDefault();
+                                 document.getElementById('logout-form').submit();">
                             <i class="zmdi zmdi-power"></i>
                         </a>
                     </li>
+                    <form id="logout-form" action="{{ url('/logout') }}" method="POST">
+                    {{ csrf_field() }}
+                    </form>
                 </ul>
             </div>
             <!-- End User -->

@@ -85,7 +85,7 @@ class EditProfilController extends Controller
     {
         //Simpan Data
         $this->validate($request, [
-            'username'  => 'required|alpha',
+            'username'  => 'required|alpha_num',
             'email'     => 'required|max:50',
             'phone'     => 'required|between:10,12',
             'alamat'    => 'required|max:80',
