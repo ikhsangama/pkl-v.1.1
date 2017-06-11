@@ -91,12 +91,14 @@ class ListingController extends Controller
     {
         $paket_id=$id;
         $pakets = Paket::where('id','=',$paket_id)->get();
+        // dd($pakets);
         if(!Auth::user()){
           $query2 = NULL;
-          // dd($id,$pakets,$query2);
-          redirect ('/login',['id'=>$id,'pakets'=>$pakets, 'query2'=>$query2]);
+          // dd($pakets, $query2);
+          return view('customer.detail',['id'=>$id, 'pakets'=>$pakets,'query2'=>$query2]);
         }
         $query2 = Auth::user()->id;
-        return view('customer.detail',['id'=>$id,'pakets'=>$pakets, 'query2'=>$query2]);
+        // dd($id,$pakets,$query2);
+        return view('customer.detail',['id'=>$id, 'pakets'=>$pakets,'query2'=>$query2]);
     }
 }

@@ -30,9 +30,15 @@ class BookingController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id,$query2)
     {
-        //
+      $paket_id=$id;
+      $pakets = Paket::where('id','=',$paket_id)->get();
+      foreach ($pakets as $key => $value) {
+          $schedule = Schedule::where('id','=',$value->schedule_id)->get();
+      }
+       $user = User::find($query2);
+      return view('bookingform',['id'=>$id,'pakets'=>$pakets,'user'=>$user,'schedule'=>$schedule]);
     }
 
     /**
@@ -55,14 +61,14 @@ class BookingController extends Controller
      */
     public function show($id,$query2)
     {
-        $paket_id=$id;
-        $pakets = Paket::where('id','=',$paket_id)->get();
-        foreach ($pakets as $key => $value) {
-            $schedule = Schedule::where('id','=',$value->schedule_id)->get();
-        }
-      
-         $customer = User::find($query2);      
-        return view('bookingform',['id'=>$id,'pakets'=>$pakets,'customer'=>$customer,'schedule'=>$schedule]);
+        // $paket_id=$id;
+        // $pakets = Paket::where('id','=',$paket_id)->get();
+        // foreach ($pakets as $key => $value) {
+        //     $schedule = Schedule::where('id','=',$value->schedule_id)->get();
+        // }
+        //
+        //  $user = User::find($query2);
+        // return view('bookingform',['id'=>$id,'pakets'=>$pakets,'user'=>$user,'schedule'=>$schedule]);
     }
 
     /**
@@ -71,16 +77,15 @@ class BookingController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function mail(Request $request) {
+    public function mail(Request $request,id $id, query2 $query2) {
         // $email = $_POST['email'];
         // Mail::send('register',['paket'=>$paket])function($m) use ($email){
         //     $m->from('hello@app.com', 'Your Application');
 
         //     $m->to($user->email, $user->name)->subject('Your Reminder!');
         // }
-        
-        dd($request);
 
+        dd($request, $id, $query2);
 
         $user = User::findOrFail($id);
 

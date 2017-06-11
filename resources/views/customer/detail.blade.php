@@ -11,7 +11,7 @@
 						</p>
 					</div>
 				</div>
-				
+
 				<!-- Icon -->
 				<div class="row">
 					<div class="col-md-offset-2 col-sm-offset-2 col-xs-offset-2 col-md-10 col-sm-10 col-xs-10">
@@ -19,14 +19,14 @@
 						</div>
 					</div>
 				</div>
-				
+
 				<!-- Description -->
 				<div class="row">
 					<div class="col-md-offset-5 col-sm-offset-5 col-xs-offset-5 col-md-7 col-sm-7 col-xs-7">
 						<p class="list1-description">The right tour for the right traveller</p>
 					</div>
 				</div>
-				
+
 				<!-- HOME | ADVENTURES -->
 				<div class="row">
 					<div class="col-md-offset-5 col-sm-offset-5 col-xs-offset-5 col-md-7 col-sm-7 col-xs-7">
@@ -42,7 +42,7 @@
 				</div>
 			</div>
 		</div>
-		
+
 		<div class="detail2-background">
 			<div class="container">
 				<div class="row">
@@ -68,7 +68,7 @@
 								<option value="" selected disabled>Price</option>
 							</select>
 						</div>
-						
+
 						<div class="col-md-2 col-sm-2 col-xs-2">
 							<a href="#" class="detail-searchbtn" role="button">SEARCH</a>
 						</div>
@@ -89,13 +89,13 @@
 								</p>
 							</div>
 						</div>
-						
+
 						<!-- Icon -->
 						<div class="row">
 							<div class="col-md-12 col-sm-12 col-xs-12">
 							</div>
 						</div>
-						
+
 						<!-- Detail 3 Description -->
 						<div class="row">
 							<div class="col-md-12 col-sm-12 col-xs-12">
@@ -104,7 +104,7 @@
 								</p>
 							</div>
 						</div>
-						
+
 						<!-- Trip Overview -->
 						<div class="row">
 							<div class="col-md-12 col-sm-12 col-xs-12">
@@ -129,7 +129,7 @@
 											</div>
 										</div>
 									</div>
-									
+
 									<div class="col-md-6 col-sm-6 col-xs-6">
 										<div class="row">
 											<!-- Ages, Group Size -->
@@ -155,7 +155,7 @@
 								</div>
 							</div>
 						</div>
-						
+
 						<!-- Social Media Icon -->
 						<div class="row">
 							<div class="col-md-12 col-sm-12 col-xs-12">
@@ -189,7 +189,7 @@
 							</div>
 						</div>
 					</div>
-					
+
 					<!-- Another Trip Overview -->
 					<div class="col-md-6 col-sm-6 col-xs-6">
 						<div class="detail3-subbackground">
@@ -248,7 +248,7 @@
 									</div>
 								</div>
 							</div>
-							
+
 							<!-- Book Button -->
 							<div class="row">
 								<div class="col-md-12 col-sm-12 col-xs-12">
@@ -270,12 +270,12 @@
 				<div class="row">
 					<p class="detail4-header">TRIP <b>INCLUSIONS</b></p>
 				</div>
-				
+
 				<!-- Icon -->
 				<div class="row">
 					<div class="detail4-iconheader"></div>
 				</div>
-				
+
 				<!-- Description -->
 				<div class="row">
 					<div class="col-md-offset-2 col-sm-offset-2 col-xs-offset-2 col-md-8 col-sm-8 col-xs-8">
@@ -283,7 +283,7 @@
 						<br />id, convallis iaculis eros. Praesent porta lacinia elementum.</p>
 					</div>
 				</div>
-				
+
 				<!-- Inclusion Trapezium (Belum Bisa Margin Bottom, Belum Buat Kelas)-->
 				<div class="row">
 					<div class="inclusions-position">
@@ -306,21 +306,21 @@
 				</div>
 			</div>
 		</div>
-		
+
 		<div class="detail5-background">
 			<div class="container">
 				<!-- Header -->
 				<div class="row">
 					<p class="detail5-header">TRIP <b>DATE & PRICE</b></p>
 				</div>
-				
+
 				<!-- Icon -->
 				<div class="row">
 					<div class="detail5-icon">
-						
+
 					</div>
 				</div>
-				
+
 				<!-- Description -->
 				<div class="row">
 					<div class="col-md-offset-2 col-sm-offset-2 col-xs-offset-2 col-md-8 col-sm-8 col-xs-8">
@@ -328,7 +328,7 @@
 						<br />id, convallis iaculis eros. Praesent porta lacinia elementum.</p>
 					</div>
 				</div>
-				
+
 				<div class="row">
 					<table border="0" class="table-position">
 						<tr class="table-header">
@@ -377,45 +377,31 @@
 				</div>
 			</div>
 		</div>
-		
+
 		<div class="detail6-background">
 			<div class="container">
 				<div class="row">
 					<!-- Header -->
 					<p class="detail6-header">RELATED <b>TRIPS</b></p>
 				</div>
-				
+
 				<!-- Icon -->
 				<div class="row">
 					<div class="detail6-icon">
-						
+
 					</div>
 				</div>
-				
+
 				<div class="row">
 					<div class="col-md-4 col-sm-4 col-xs-4">
 						<a href="#">
 							<div class="detail6-listingbox" role="button" data-toggle="button">
 								<div class="detail6-listingtrapezium">
 									<div class="row">
-										
+
 									</div>
 									<div class="row">
-										
-									</div>
-								</div>
-							</div>
-						</a>
-					</div>
-					<div class="col-md-4 col-sm-4 col-xs-4">
-						<a href="#">
-							<div class="detail6-listingbox" role="button" data-toggle="button">
-								<div class="detail6-listingtrapezium">
-									<div class="row">
-										
-									</div>
-									<div class="row">
-										
+
 									</div>
 								</div>
 							</div>
@@ -426,10 +412,24 @@
 							<div class="detail6-listingbox" role="button" data-toggle="button">
 								<div class="detail6-listingtrapezium">
 									<div class="row">
-										
+
 									</div>
 									<div class="row">
-										
+
+									</div>
+								</div>
+							</div>
+						</a>
+					</div>
+					<div class="col-md-4 col-sm-4 col-xs-4">
+						<a href="#">
+							<div class="detail6-listingbox" role="button" data-toggle="button">
+								<div class="detail6-listingtrapezium">
+									<div class="row">
+
+									</div>
+									<div class="row">
+
 									</div>
 								</div>
 							</div>
@@ -449,7 +449,7 @@
 			var cust = $('#customer').val();
 			console.log(this.id);
 			window.location.href = '/booking/'+unik+'/'+cust;
-		   
+
 		});
 
 
