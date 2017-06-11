@@ -151,7 +151,7 @@
                                                 <td>{{$agent->address }}</td>
                                                 <td class="actions">
                                                   <a onclick="showagent({{$agent->id}})" href="#" class=""><i class="fa fa-eye"></i></a>
-                                                  <a onclick="editagent({{$agent->id}})" href="#" class="on-default edit-row"><i class="fa fa-pencil"></i></a>
+                                                  <a onclick="" href="/dash/agent/{{$agent->id}}/edit" class="on-default edit-row"><i class="fa fa-pencil"></i></a>
                                                   <a onclick="deleteagent({{$agent->id}})" href="#" class="on-default remove-row"><i class="fa fa-trash-o"></i></a>
                                                 </td>
                                             </tr>

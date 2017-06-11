@@ -1,5 +1,5 @@
 
-@extends('layouts.mainproto')
+@extends('layouts.app')
 @section('content')
 	
 	<script type="text/javascript" src="{{ URL('assets/js/jquery.min.js') }}"></script>
@@ -101,7 +101,7 @@
 				<div class="row">
 				@foreach ($pakets as $key => $paket)
 					<div class="col-md-4 col-sm-4 col-xs-4">
-						<!-- <a href="{{action('IndexController@detail',[$paket->id])}}"> -->
+						
 							<div class="listing-box" role="button" id="{{$paket->id}}">
 								<input type="hidden" id="id_paket" value="{{$paket->id}}">
 								<div class="close-div">
@@ -190,7 +190,7 @@
 $('.listing-box').on('click', function(e,unik) {
 	var unik = $('#id_paket').val();
 	console.log(this.id);
-	window.location.href = 'containerdetailproto/'+this.id;
+	window.location.href = 'detail/'+this.id;
    
 });
 

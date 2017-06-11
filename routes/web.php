@@ -18,10 +18,12 @@ Route::group(['middleware' => 'admin'], function(){
 
 	//CRUD Agent
 	Route::get('/dash/agents', 'Admin\AgentsController@showAll');
+	Route::get('/dash/agent/{id}/edit','Admin\AgentsController@editByAdmin');
+	Route::PUT('/dash/agent/{id}/update','Admin\AgentsController@updateByAdmin');
 	Route::get('/dash/agent/{id}','Admin\AgentsController@show');
 	Route::get('/dash/agentcreate','Admin\AgentsController@createByAdmin');
 	Route::post('/dash/agents','Admin\AgentsController@storeByAdmin');
-	Route::post('/dash/agentupdate/{id}','Admin\AgentsController@edit');
+	// Route::post('/dash/agentupdate/{id}','Admin\AgentsController@edit');
 	Route::get('/dash/agentdelete/{id}','Admin\AgentsController@destroy');
 
 	//CRUD Customer
@@ -45,6 +47,10 @@ Route::group(['middleware' => 'customer'], function(){
 	// Manage Profile
 	Route::get('/{id}/customer/showedit', 'Customer\EditProfilController@edit');
 	Route::PUT('/{id}/update', 'Customer\EditProfilController@update');
+
+	//Booking
+	Route::get('{query2}/booking/{id}/', 'BookingController@show');
+	Route::get('/detail/{id}', 'ListingController@detail');
 });
 
 //AGENT, LEVEL 2
@@ -59,14 +65,18 @@ Route::group(['middleware' => 'agent'], function(){
 });
 
 Route::get('/', 'WelcomeController@index');
-Route::get('/listing', 'WelcomeController@index');
-Route::post('/listing', 'WelcomeController@show');
+Route::post('/mail/{pakets}', 'BookingController@mail');
+Route::get('/listing', 'WelcomeController@show');
+Route::get('/detail/{id}', 'ListingController@detail');
+
+// Route::get('/booking/{id}/{query2}', 'BookingController@show');
+Route::post('/booking', 'BookingController@mail');
 
 Route::get('/verify/{ver_token}/{id}','Auth\RegisterController@verify_register');
 
 Auth::routes();
 
 // Booking Form
-Route::get('/booking', function () {
-    return view('bookingform');
-});
+// Route::get('/booking', function () {
+//     return view('bookingform');
+// });

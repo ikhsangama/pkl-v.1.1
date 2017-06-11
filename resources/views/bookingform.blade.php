@@ -13,13 +13,13 @@
         <title>Booking Form</title>
 
         <!-- App CSS -->
-        <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-        <link href="assets/css/core.css" rel="stylesheet" type="text/css" />
-        <link href="assets/css/components.css" rel="stylesheet" type="text/css" />
-        <link href="assets/css/icons.css" rel="stylesheet" type="text/css" />
-        <link href="assets/css/pages.css" rel="stylesheet" type="text/css" />
-        <link href="assets/css/menu.css" rel="stylesheet" type="text/css" />
-        <link href="assets/css/responsive.css" rel="stylesheet" type="text/css" />
+        <link href="/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <link href="/assets/css/core.css" rel="stylesheet" type="text/css" />
+        <link href="/assets/css/components.css" rel="stylesheet" type="text/css" />
+        <link href="/assets/css/icons.css" rel="stylesheet" type="text/css" />
+        <link href="/assets/css/pages.css" rel="stylesheet" type="text/css" />
+        <link href="/assets/css/menu.css" rel="stylesheet" type="text/css" />
+        <link href="/assets/css/responsive.css" rel="stylesheet" type="text/css" />
 
         <!-- HTML5 Shiv and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -45,45 +45,71 @@
                 <h4 class="text-uppercase font-bold m-b-0">Booking Form</h4>
             </div>
             <div class="panel-body">
-                <form class="form-horizontal m-t-20" role="form" method="POST" action="{{ url('/asdasd') }}">
-
+                <form class="form-horizontal m-t-20" role="form" method="POST" action="{{ url('/booking') }}">
+                        {{ csrf_field() }}
                     <div class="form-group ">
-                        <div class="col-xs-12 col-sm-12 col-md-12">
-                            <input class="form-control" name="fullname" type="text"  placeholder="Your Name" required autofocus>
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-12 col-md-12">
+                                <input class="form-control" name="username" type="text" placeholder="Your Username" value="{{$customer->username}}" required autofocus>
+                                <!-- validation-->
+                                @if ($errors->has('username'))
+                                <!-- <div class="container red-text text accent-3"> -->
+                                  {{ $errors->first('username') }}
+                                <!-- </div> -->
+                                @endif
+                                <!-- endvalidation-->
+                            </div>
                         </div>
-                    </div>
-
-                    <div class="form-group ">
-                        <div class="col-xs-12 col-sm-12 col-md-12">
-                            <input class="form-control" name="email" type="email"  placeholder="Your Email" required>
+                        <br>
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-12 col-md-12">
+                                <input class="form-control" name="email" type="email" placeholder="Your Email" value="{{$customer->email}}" required>
+                                <!-- validation-->
+                                @if ($errors->has('email'))
+                                <!-- <div class="container red-text text accent-3"> -->
+                                {{ $errors->first('email') }}
+                                <!-- </div> -->
+                                @endif
+                                <!-- endvalidation-->
+                            </div>
                         </div>
-                    </div>
-
-                    <div class="form-group ">
-                        <div class="col-xs-12 col-sm-12 col-md-12">
-                            <input class="form-control" name="phone" type="tel"  placeholder="Your Phone Number" required>
+                        <br>
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-12 col-md-12">
+                                <input class="form-control" name="phone" type="text" placeholder="Your Phone Number" value="{{$customer->customer->phone}}" required>
+                                <!-- validation-->
+                                @if ($errors->has('phone'))
+                                <!-- <div class="container red-text text accent-3"> -->
+                                  {{ $errors->first('phone') }}
+                                <!-- </div> -->
+                                @endif
+                                <!-- endvalidation-->
+                            </div>
                         </div>
-                    </div>
-
-                    <label class="control-label partisipan" for="example-input1-group1">Participants</label>
-                    <div class="form-group">
-                        <div class="col-sm-3">
-                            <select class="form-control">
-                                <option>12</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option>
-                            </select>
+                        <br>
+                        <label class="control-label partisipan" for="example-input1-group1">Participants</label>
+                        <div class="form-group">
+                            <div class="col-sm-3">
+                                <input type="hidden" value="{{$pakets}}">
+                                @foreach ($schedule as $sch)
+                                    <input type="number" name="quantity" min="1" max="{{$sch->maxpeople}}">
+                                @endforeach
+                            </div>
                         </div>
-                    </div>
-
-                    <div class="form-group">
-                        <div class="col-xs-12 col-sm-12 col-md-12">
-                            <textarea class="form-control" rows="5" placeholder="Your Address" required></textarea>
+                        <br>
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-12 col-md-12">
+                                <textarea class="form-control" rows="5" name="alamat" placeholder="Your Address" required>{{$customer->customer->alamat}}</textarea>
+                                <!-- validation-->
+                                @if ($errors->has('alamat'))
+                                <!-- <div class="container red-text text accent-3"> -->
+                                  {{ $errors->first('alamat') }}
+                                <!-- </div> -->
+                                @endif
+                                <!-- endvalidation-->
+                            </div>
                         </div>
-                    </div>
-
+                        <br>
 
                     <div class="form-group text-center m-t-40">
                         <div class="col-xs-12 col-sm-12 col-md-12">

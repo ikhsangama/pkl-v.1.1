@@ -66,8 +66,16 @@ class LoginController extends Controller
         if ($this->attemptLogin($request)) {
             //Menguji Status, 0 atau 1
             if (Auth::user()->stat==0){
+              if (Auth::user()->level==1){
                 Auth::logout();
                 return redirect('/login')->with('warning','Akun Belum Aktif, Lakukan Verifikasi Email');
+                }
+            }
+            if (Auth::user()->stat==0){
+                if (Auth::user()->level==2){
+                Auth::logout();
+                return redirect('/login')->with('warning','Akun Belum Aktif, Tunggu Verifikasi Admin');
+                }
             }
             $user_id = Auth::user()->id;
             //Menguji Level dan Gender, tanda sudah melengkapi atau belum

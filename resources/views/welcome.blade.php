@@ -66,7 +66,7 @@
 				<!-- Search Button -->
 				<div class="row">
 						<div class="col-md-offset-7 col-sm-offset-7 col-xs-offset-7 col-md-3 col-sm-3 col-xs-3">
-						<a href="#" class="search-button" role="button" id="search-button">SEARCH</a>
+						<button class="search-button" role="button" id="search-button">SEARCH</button>
 						<!-- <input type="submit" class="search-button" value="SEARCH"> -->
 						</div>
 				</div>
@@ -813,14 +813,13 @@
         </script>
 
         <script>
-
-            jQuery(document).ready(function() {
+        
             	//get id adventure and destination
             	$('#search-button').on('click',function(){
 
             		//$('#adventure').on('change',function(){
 	            		var adv = $('#adventure').val();
-	            		console.log(adv);	
+	            		console.log('adv');	
 	            	//});
 
 	            	//$('#destination').on('change',function(){
@@ -835,7 +834,7 @@
 
 	            	
 	            	 window.location.href = 'listing?adv='+adv+'&destination='+destination+'&date='+date;
-				});
+				
 
             	
 

@@ -42,7 +42,7 @@
                     </div>
                     <div class="m-t-40 card-box">
                         <div class="text-center">
-                            <h4 class="text-uppercase font-bold m-b-0">Customer Sign In</h4>
+                            <h4 class="text-uppercase font-bold m-b-0">Sign In</h4>
                         </div>
                         <div class="panel-body">
                             <form class="form-horizontal" role="form" method="POST" action="{{ url('/login') }}">

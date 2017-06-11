@@ -3,18 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-//tambahan
-use DB;
-use App\Models\Customer;
-use App\Model\Agent;
-use App\Models\Adventures;
-use App\Models\Inf_lokasi;
-use App\Models\Paket;
-//mbaca otentifikasi
 use Illuminate\Support\Facades\Auth;
 
-class WelcomeController extends Controller
+use App\Models\Paket;
+
+class ListingController extends Controller
 {
+
+
     /**
      * Display a listing of the resource.
      *
@@ -22,17 +18,7 @@ class WelcomeController extends Controller
      */
     public function index()
     {
-        $data['query'] = DB::table('adventures')->get();
-        $data['query1'] = DB::table('inf_lokasi')->where('lokasi_kabupatenkota', '00')->where('lokasi_kecamatan', '00')->where('lokasi_kelurahan', '0000')->orderby('lokasi_nama')->get();
-        if(Auth::user()){
-          $data['query2'] = Auth::user()->id;
-        }
-        // $data['query2'] = Auth::user()->id;
-        // dd($user_id);
-         return view('welcome',$data);
-    //   return view('welcome',[$data,
-    //   'user_id'=>$user_id,
-    // ]);
+        //
     }
 
     /**
@@ -62,23 +48,9 @@ class WelcomeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show()
+    public function show($id)
     {
-        $adv = $_GET['adv'];
-        $destination = $_GET['destination'];
-        $date = $_GET['date'];
-        //select paket (kriteria ^)
-        $pakets = Paket::with('schedule')
-        ->whereHas('schedule',function ($q) use ($date){
-          $q->where('start_date',$date);
-        })
-        ->where('adv_id','=',$adv)
-        ->where('id_lokasi','=',$destination)->get();
-        if(Auth::user()){
-          $query2 = Auth::user()->id;
-          return view('listing',['pakets'=>$pakets, 'query2'=>$query2]);
-        }
-       return view('listing',['pakets'=>$pakets,]);
+        //
     }
 
     /**
@@ -113,5 +85,18 @@ class WelcomeController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function detail($id)
+    {
+        $paket_id=$id;
+        $pakets = Paket::where('id','=',$paket_id)->get();
+        if(!Auth::user()){
+          $query2 = NULL;
+          // dd($id,$pakets,$query2);
+          redirect ('/login',['id'=>$id,'pakets'=>$pakets, 'query2'=>$query2]);
+        }
+        $query2 = Auth::user()->id;
+        return view('customer.detail',['id'=>$id,'pakets'=>$pakets, 'query2'=>$query2]);
     }
 }

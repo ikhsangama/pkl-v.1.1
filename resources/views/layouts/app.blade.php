@@ -64,7 +64,11 @@
 @endif
 @if(Auth::user()->isCustomer(true))
         <ul class="nav navbar-nav navbar-right">
-          <li><a href="{{$query2}}/customer/showedit">Profile</a></li>
+          <li><a href="/{{$query2}}/customer/showedit">Profile</a></li>
+@endif
+@if(Auth::user()->isAgent(true))
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="/dashboardagent">Dashboard</a></li>
 @endif
           <li>
             <a href="{{ url('/logout') }}"

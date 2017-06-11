@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -50,7 +51,7 @@
                     <div class="form-group ">
                         <div class="row">
                             <div class="col-xs-12 col-sm-12 col-md-12">
-                                <input class="form-control" name="username" type="text"  value="{{$customer->username}}" required autofocus>
+                                <input class="form-control" name="username" type="text" placeholder="Your Username" value="{{$customer->username}}" required autofocus>
                                 <!-- validation-->
                                 @if ($errors->has('username'))
                                 <!-- <div class="container red-text text accent-3"> -->
@@ -63,7 +64,7 @@
                         <br>
                         <div class="row">
                             <div class="col-xs-12 col-sm-12 col-md-12">
-                                <input class="form-control" name="email" type="email"  value="{{$customer->email}}" required>
+                                <input class="form-control" name="email" type="email" placeholder="Your Email" value="{{$customer->email}}" required>
                                 <!-- validation-->
                                 @if ($errors->has('email'))
                                 <!-- <div class="container red-text text accent-3"> -->
@@ -76,7 +77,7 @@
                         <br>
                         <div class="row">
                             <div class="col-xs-12 col-sm-12 col-md-12">
-                                <input class="form-control" name="phone" type="text"  value="{{$customer->phone}}" required>
+                                <input class="form-control" name="phone" type="text" placeholder="Your Phone Number" value="{{$customer->customer->phone}}" required>
                                 <!-- validation-->
                                 @if ($errors->has('phone'))
                                 <!-- <div class="container red-text text accent-3"> -->
@@ -89,7 +90,7 @@
                         <br>
                         <div class="row">
                             <div class="col-xs-12 col-sm-12 col-md-12">
-                                <textarea class="form-control" rows="5" name="alamat" value"{{$customer->username}}" required>{{$customer->username}}</textarea>
+                                <textarea class="form-control" rows="5" name="alamat" placeholder="Your Address" required>{{$customer->customer->alamat}}</textarea>
                                 <!-- validation-->
                                 @if ($errors->has('alamat'))
                                 <!-- <div class="container red-text text accent-3"> -->

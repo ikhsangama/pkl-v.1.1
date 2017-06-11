@@ -83,17 +83,54 @@ class AgentsController extends BaseController {
 
       //simpan gambar DIRI
       $fileDIRI = $request->username. '_diri.png';
-      $request->file('fotoktp')->storeAs("public\diri",$fileDIRI);
+      $request->file('fotodiri')->storeAs("public\diri",$fileDIRI);
       $agent->foto = $fileDIRI;
 
       //simpan gambar KTP
       $fileKTP = $request->username. '_KTP.png';
-      $request->file('fotodiri')->storeAs("public\KTP",$fileKTP);
+      $request->file('fotoktp')->storeAs("public\KTP",$fileKTP);
       $agent->multidokumen = $fileKTP;
 
       $agent->save();
     }
     return redirect ('/dash/agents');
+  }
+
+  public function editByAdmin($id)
+  {
+    // mengambil data user
+    $user = User::find($id);
+
+    //mengambil data agent
+    $user_id = $user->id;
+    $agent = Agent :: where('user_id', $user_id)->first();
+
+    return view ('admin.editagent',['agent' => $agent, 'user' => $user]);
+  }
+
+  public function updateByAdmin(Request $request, $id)
+  {
+    // dd($request);
+    // mengambil data user
+    $user = User::find($id);
+    $user->username = $request->username;
+    $user->email = $request->email;
+
+    $user_id = $user->id;
+    $agent = Agent :: where('user_id', $user_id)->first();
+    // dd($request, $agent);
+    $agent->fullname = $request->fullname;
+    $agent->address = $request->alamat;
+    $agent->city = $request->kota;
+    $agent->province = $request->provinsi;
+    $agent->bahasa = $request->bahasa;
+    $agent->tanggallahir = $request->tanggallahir;
+    // dd($agent);
+    $user->save();
+    $agent->save();
+    // }
+
+    return redirect ('dash/agents');
   }
 
   /**
@@ -168,24 +205,6 @@ class AgentsController extends BaseController {
       }
   }
 
-  public function edit($id, Request $request)
-  {
-    $agents = new Agents();
-    $data = array(
-        'fullname'=>$request->fullname,
-        'username'=>$request->username,
-        'email'=>$request->email,
-        'address'=>$request->address,
-        'province'=>$request->province,
-        'city'=>$request->city,
-        'tanggallahir'=>$request->tanggallahir,
-        'bahasa'=>$request->bahasa
-        /*'foto'=>$request->fotodiri,
-        'multidokumen'=>$request->fotoktp*/
-      );
-    $update = $agents::where('id', $id)->update($data);
-    echo "success";
-  }
   /**
    * Remove the specified resource from storage.
    *

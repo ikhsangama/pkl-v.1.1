@@ -119,14 +119,16 @@ class RegisterController extends Controller
             return redirect('login')->with('warning','Verifikasi Email Tidak Cocok');
         }
         //Status User Jadi 1
-        $user->stat = 1;
-        $user->save();
         //Login
         $this->guard()->login($user);
         if($user->level == 1){
+        $user->stat = 1;
+        $user->save();
           return redirect($id . "/customer/completing");
         }
         if($user->level == 2){
+        $user->stat = 0;
+        $user->save();
           return redirect($id . "/agent/completing");
         }
 

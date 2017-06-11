@@ -87,8 +87,8 @@
       							</div>
       						</div>
 
-                  <input name="level" type="radio" value="1">Customer<br>
-                  <input name="level" type="radio" value="2">Agent
+                  <input name="level" type="radio" value="1"> Customer<br>
+                  <input name="level" type="radio" value="2"> Agent
       						<!-- <div class="form-group"> -->
       							<!-- <div class="col-xs-12"> -->
       								<!-- <div class="checkbox checkbox-custom"> -->
