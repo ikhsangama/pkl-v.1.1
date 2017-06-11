@@ -18,6 +18,8 @@
 
 
 <body style="margin: 0; padding: 0; width: 100%; background-color: #F2F4F6;">
+  <h1>{{$user->email}}</h1>
+  <h2>{{$booking->id}}</h2>
     <table width="100%" cellpadding="0" cellspacing="0">
         <tr>
             <td style="width: 100%; margin: 0; padding: 0; background-color: #F2F4F6;" align="center">
@@ -51,14 +53,14 @@
                                             </p>
                                             <br/>
                                             <p style="margin-top: 0; color: #74787E; font-size: 16px; line-height: 1.5em;">
-                                                
+
                                             </p>
-                                        
+
                                         <!-- Action Button -->
                                                                                     <!-- <table style="width: 100%; margin: 30px auto; padding: 0; text-align: center;" align="center" width="100%" cellpadding="0" cellspacing="0">
                                                 <tr>
                                                     <td align="center">
-                                                        
+
                                                         <a href="http://localhost:8000/verify/{{$user->ver_token}}/{{$user->id}}"
                                                             style="font-family: Arial, &#039;Helvetica Neue&#039;, Helvetica, sans-serif; display: block; display: inline-block; width: 200px; min-height: 20px; padding: 10px;
                  background-color: #3869D4; border-radius: 3px; color: #ffffff; font-size: 15px; line-height: 25px;
@@ -70,12 +72,12 @@
                                                     </td>
                                                 </tr>
                                             </table> -->
-                                        
+
                                         <!-- Outro -->
                                                                                     <p style="margin-top: 0; color: #74787E; font-size: 16px; line-height: 1.5em;">
                                                 If you did not request a password reset, no further action is required.
                                             </p>
-                                        
+
                                         <!-- Salutation -->
                                         <p style="margin-top: 0; color: #74787E; font-size: 16px; line-height: 1.5em;">
                                             Regards,<br>Nekaneka

@@ -50,7 +50,12 @@ Route::group(['middleware' => 'customer'], function(){
 
 	//Booking
 	Route::get('/booking/{id}/{query2}', 'BookingController@create');
-	Route::post('/createbooking/{id}/{$user->id}', 'BookingController@mail');
+	//coba
+	Route::post('/createbooking/{idpaket}/{iduser}', 'BookingController@store');
+	//akhircoba
+
+	// Route::post('/createbooking/{id}/{$user->id}', 'BookingController@store');
+	// Route::post('/createbooking/{id}/{$user->id}', 'BookingController@mail');
 	// Route::get('/detail/{id}', 'ListingController@detail');
 });
 

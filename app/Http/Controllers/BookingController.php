@@ -5,13 +5,14 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 //Tambahan
+use App\Models\Booking;
 use App\Models\Paket;
 use App\Models\Schedule;
+use App\Models\Customer;
 use App\User;
 use Session;
-//Mail
-use App\Mail\userOrder;
-use Illuminate\Support\Facades\Mail;
+//event
+use App\Events\BookingCreated;
 
 class BookingController extends Controller
 {
@@ -47,9 +48,29 @@ class BookingController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $idpaket, $iduser)
     {
-        //
+      // dd($request);
+      $booking = new Booking();
+      $booking->paket_id = $idpaket;
+
+      $customer_id = Customer::where('user_id', $iduser)->first()->id;
+      // dd($customer_id);
+      $booking->customer_id = $customer_id;
+
+      $schedule_id = Paket::find($idpaket)->schedule_id;
+      $booking->schedule_id = $schedule_id;
+
+      $booking->participants = $request->participants;
+      $booking->save();
+
+      //kirim mail
+      $user = User::find($iduser);
+      $user_email = $user->email;
+
+      // dd($booking, $user_email);
+      event(new BookingCreated($booking, $user));
+      // Mail::to($user_email)->send(new userOrder($user, $booking));
     }
 
 

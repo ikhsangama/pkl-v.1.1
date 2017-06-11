@@ -92,7 +92,7 @@
                             <div class="col-sm-3">
                                 <input type="hidden" value="{{$pakets}}">
                                 @foreach ($schedule as $sch)
-                                    <input type="number" name="quantity" min="1" max="{{$sch->maxpeople}}">
+                                    <input type="number" name="participants" min="1" max="{{$sch->maxpeople}}">
                                 @endforeach
                             </div>
                         </div>
