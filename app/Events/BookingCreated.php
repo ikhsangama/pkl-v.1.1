@@ -10,13 +10,17 @@ use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 //TAMBAHAN
 use App\User;
-use App\Models\Customer;
 use App\Models\Booking;
+use App\Models\Customer;
+use App\Models\Schedule;
+use App\Models\Inf_lokasi;
 
 class BookingCreated
 {
     use InteractsWithSockets, SerializesModels;
 
+    public $schedule;
+    public $lokasi;
     public $booking;
     public $user;
     /**
@@ -24,11 +28,13 @@ class BookingCreated
      *
      * @return void
      */
-    public function __construct(Booking $booking, User $user)
+    public function __construct(Booking $booking, User $user, Inf_lokasi $lokasi, Schedule $schedule)
     {
-      // dd($this->booking = $booking);
-      $this->booking = $booking;
       $this->user = $user;
+      $this->lokasi = $lokasi;
+      $this->booking = $booking;
+      $this->schedule = $schedule;
+      // dd($this);
     }
 
     /**

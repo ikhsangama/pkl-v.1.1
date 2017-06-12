@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 use App\Models\Paket;
+use App\User;
 
 class ListingController extends Controller
 {
@@ -93,8 +94,9 @@ class ListingController extends Controller
         $pakets = Paket::where('id','=',$paket_id)->get();
         // dd($pakets);
         if(!Auth::user()){
-          $query2 = NULL;
+          $query2 = "NULL";
           // dd($pakets, $query2);
+          // return redirect('/login')->with('warning', 'Silahkan login terlebih dahulu');
           return view('customer.detail',['id'=>$id, 'pakets'=>$pakets,'query2'=>$query2]);
         }
         $query2 = Auth::user()->id;

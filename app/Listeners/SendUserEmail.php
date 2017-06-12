@@ -30,10 +30,13 @@ class SendUserEmail
      */
     public function handle(BookingCreated $event)
     {
+      // dd($event);
       $user = $event->user;
+      $lokasi = $event->lokasi;
       $booking = $event->booking;
-      // dd($event->user->email, $event->booking);
-      Mail::to($user->email)->send(new userOrder($user, $booking));
+      $schedule = $event->schedule;
+      // dd($event->user->email, $event->booking, $event->lokasi);
+      Mail::to($user->email)->send(new userOrder($user, $booking, $lokasi, $schedule));
 
     }
 }

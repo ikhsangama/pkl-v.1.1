@@ -20,6 +20,9 @@
 <body style="margin: 0; padding: 0; width: 100%; background-color: #F2F4F6;">
   <h1>{{$user->email}}</h1>
   <h2>{{$booking->id}}</h2>
+  <h2>{{$lokasi->lokasi_nama}}</h2>
+  <h2>{{$schedule->start_date}}</h2>
+  <h2>{{$schedule->end_date}}</h2>
     <table width="100%" cellpadding="0" cellspacing="0">
         <tr>
             <td style="width: 100%; margin: 0; padding: 0; background-color: #F2F4F6;" align="center">

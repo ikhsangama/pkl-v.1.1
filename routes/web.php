@@ -74,8 +74,8 @@ Route::get('/', 'WelcomeController@index');
 Route::post('/mail/{pakets}', 'BookingController@mail');
 Route::get('/listing', 'WelcomeController@show');
 Route::get('/detail/{id}', 'ListingController@detail');
-
-// Route::get('/booking/{id}/{query2}', 'BookingController@show');
+// Route::get('/booking/{id}/NULL', 'BookingController@create');
+// Route::get('/booking/{id}/{query2}', 'BookingController@create');
 // Route::post('/booking', 'BookingController@mail');
 
 Route::get('/verify/{ver_token}/{id}','Auth\RegisterController@verify_register');

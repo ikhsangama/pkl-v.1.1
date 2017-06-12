@@ -5,11 +5,12 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 //Tambahan
-use App\Models\Booking;
+use App\User;
 use App\Models\Paket;
+use App\Models\Booking;
 use App\Models\Schedule;
 use App\Models\Customer;
-use App\User;
+use App\Models\Inf_lokasi;
 use Session;
 //event
 use App\Events\BookingCreated;
@@ -62,14 +63,23 @@ class BookingController extends Controller
       $booking->schedule_id = $schedule_id;
 
       $booking->participants = $request->participants;
+      $booking->kode_booking = str_random(20);
+
       $booking->save();
 
       //kirim mail
       $user = User::find($iduser);
       $user_email = $user->email;
 
+      $paket_id = $booking->paket_id;
+      $id_lokasi = Paket::find($paket_id)->id_lokasi;
+      $lokasi = Inf_lokasi::where('lokasi_ID', $id_lokasi)->first();
+      // dd($lokasi);
+      $schedule_id = $booking->schedule_id;
+      $schedule = Schedule::find($schedule_id);
       // dd($booking, $user_email);
-      event(new BookingCreated($booking, $user));
+      event(new BookingCreated($booking, $user, $lokasi, $schedule));
+      return redirect('/');
       // Mail::to($user_email)->send(new userOrder($user, $booking));
     }
 
