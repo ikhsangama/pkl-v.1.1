@@ -31,27 +31,6 @@
                     </li>
                 </ul>
 
-                <!-- Right(Notification and Searchbox -->
-                <ul class="nav navbar-nav navbar-right">
-                    <li>
-                        <!-- Notification -->
-                        <div class="notification-box">
-                            <ul class="list-inline m-b-0">
-                                <li>
-                                    <a href="javascript:void(0);" class="right-bar-toggle">
-                                        <i class="zmdi zmdi-notifications-none"></i>
-                                    </a>
-                                    <div class="noti-dot">
-                                        <span class="dot"></span>
-                                        <span class="pulse"></span>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                        <!-- End Notification bar -->
-                    </li>
-                </ul>
-
             </div><!-- end container -->
         </div><!-- end navbar -->
     </div>
@@ -72,10 +51,15 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="text-custom">
+                        <a href="{{ url('/logout') }}" class="text-custom"
+                        onclick="event.preventDefault();
+                                 document.getElementById('logout-form').submit();">
                             <i class="zmdi zmdi-power"></i>
                         </a>
                     </li>
+                    <form id="logout-form" action="{{ url('/logout') }}" method="POST">
+                    {{ csrf_field() }}
+                    </form>
                 </ul>
             </div>
             <!-- End User -->
@@ -124,8 +108,13 @@
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <div class="m-b-30">
-                                            <a href="agentcreate" class="btn btn-primary waves-effect waves-light">Add Agent <i class="fa fa-plus"></i></a>
-                                            <a href="agents" class="btn btn-primary waves-effect waves-light">List Agent <i class="fa fa-list"></i></a>
+                                            <a href="/dash/agentcreate" class="btn btn-primary waves-effect waves-light">Add Agent <i class="fa fa-plus"></i></a>
+                                            <a href="/dash/agents" class="btn btn-primary waves-effect waves-light">List Agent <i class="fa fa-list"></i></a>
+                                        </div>
+                                        <div class="m-b-30">
+                                        @if(session('warning'))
+                                            {{session('warning')}}
+                                        @endif
                                         </div>
                                     </div>
                                 </div>
@@ -150,9 +139,10 @@
                                                 <td>{{$agent->fullname }}</td>
                                                 <td>{{$agent->address }}</td>
                                                 <td class="actions">
-                                                  <a onclick="showagent({{$agent->id}})" href="#" class=""><i class="fa fa-eye"></i></a>
-                                                  <a onclick="" href="/dash/agent/{{$agent->id}}/edit" class="on-default edit-row"><i class="fa fa-pencil"></i></a>
-                                                  <a onclick="deleteagent({{$agent->id}})" href="#" class="on-default remove-row"><i class="fa fa-trash-o"></i></a>
+                                                  <a href="/dash/agent/{{$agent->id}}/edit" class="on-default edit-row"><i class="fa fa-pencil"></i></a>
+                                                  <a href="agentdelete/{{$agent->id}}" class="on-default remove-row"><i class="fa fa-trash-o"></i></a>
+                                                  <a href="agents/{{$agent->id}}/approve" class="on-default edit-row" style="color:#65E839;"><i class="fa fa-check-square" style="color:#65E839;"></i> Approve</a>
+                                                  <a onclick="" href="#" class="on-default remove-row" style="color:#FF5043;"><i class="fa fa-minus-square" style="color:#FF5043;"></i> Reject</a>
                                                 </td>
                                             </tr>
                                             @endforeach
@@ -161,104 +151,6 @@
                                 </div>
                             </div>
                             <!-- end: panel body -->
-
-                            <div id="con-close-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                                            <h4 class="modal-title">Agents</h4>
-                                        </div>
-                                        <div class="modal-body">
-                                            <div class="user-box">
-                                                <div class="user-img">
-                                                    <img src="assets/images/users/avatar-1.jpg" alt="user-img" title="Mat Helme" class="img-circle img-thumbnail img-responsive">
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <label for="field-1" class="control-label">Fullname</label>
-                                                        <input id="nama" type="text" class="form-control">
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <label for="field-2" class="control-label">Username</label>
-                                                        <input id="username" type="text" class="form-control">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <label for="field-3" class="control-label">E-mail</label>
-                                                        <input id="email" type="text" class="form-control">
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <label for="field-4" class="control-label">Tanggal Lahir</label>
-                                                        <input id="tanggallahir" type="text" class="form-control">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-12">
-                                                    <div class="form-group">
-                                                        <label for="field-5" class="control-label">Alamat</label>
-                                                        <input id="alamat" type="text" class="form-control">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-4">
-                                                    <div class="form-group">
-                                                        <label for="field-6" class="control-label">Kota</label>
-                                                        <input id="kota" type="text" class="form-control">
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <div class="form-group">
-                                                        <label for="field-7" class="control-label">Provinsi</label>
-                                                        <input id="provinsi" type="text" class="form-control">
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <div class="form-group">
-                                                        <label for="field-8" class="control-label">Bahasa</label>
-                                                        <input id="bahasa" type="text" class="form-control">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Close</button>
-                                            <button onclick="saveagent()" id="save" type="button" class="btn btn-info waves-effect waves-light">Save changes</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div><!-- /.modal -->
-
-                            <div id="panel-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
-                                <div class="modal-dialog">
-                                    <div class="modal-content p-0 b-0">
-                                        <div class="panel panel-color panel-primary">
-                                            <div class="panel-heading">
-                                                <button type="button" class="close m-t-5" data-dismiss="modal" aria-hidden="true"></button>
-                                                <h3 class="panel-title">Delete Agent</h3>
-                                            </div>
-                                            <div class="panel-body">
-                                                <p>Apa Anda yakin ingin menghapus Agent?</p>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Tidak</button>
-                                                <button onclick="executedeleteagent(this)" id="delete" type="button" class="btn btn-info waves-effect waves-light">Ya</button>
-                                            </div>
-                                            </div>
-                                        </div>
-                                    </div><!-- /.modal-content -->
-                                </div><!-- /.modal-dialog -->
-                            </div><!-- /.modal -->
 
                         </div> <!-- end panel -->
                     </div> <!-- end col-->
@@ -273,83 +165,6 @@
         </footer>
 
     </div>
-    <!-- ============================================================== -->
-    <!-- End Right content here -->
-    <!-- ============================================================== -->
-
-
-    <!-- Right Sidebar -->
-    <div class="side-bar right-bar">
-        <a href="javascript:void(0);" class="right-bar-toggle">
-            <i class="zmdi zmdi-close-circle-o"></i>
-        </a>
-        <h4 class="">Notifications</h4>
-        <div class="notification-list nicescroll">
-            <ul class="list-group list-no-border user-list">
-                <li class="list-group-item">
-                    <a href="#" class="user-list-item">
-                        <div class="avatar">
-                            <img src="assets/images/users/avatar-2.jpg" alt="">
-                        </div>
-                        <div class="user-desc">
-                            <span class="name">Michael Zenaty</span>
-                            <span class="desc">There are new settings available</span>
-                            <span class="time">2 hours ago</span>
-                        </div>
-                    </a>
-                </li>
-                <li class="list-group-item">
-                    <a href="#" class="user-list-item">
-                        <div class="icon bg-info">
-                            <i class="zmdi zmdi-account"></i>
-                        </div>
-                        <div class="user-desc">
-                            <span class="name">New Signup</span>
-                            <span class="desc">There are new settings available</span>
-                            <span class="time">5 hours ago</span>
-                        </div>
-                    </a>
-                </li>
-                <li class="list-group-item">
-                    <a href="#" class="user-list-item">
-                        <div class="icon bg-pink">
-                            <i class="zmdi zmdi-comment"></i>
-                        </div>
-                        <div class="user-desc">
-                            <span class="name">New Message received</span>
-                            <span class="desc">There are new settings available</span>
-                            <span class="time">1 day ago</span>
-                        </div>
-                    </a>
-                </li>
-                <li class="list-group-item active">
-                    <a href="#" class="user-list-item">
-                        <div class="avatar">
-                            <img src="assets/images/users/avatar-3.jpg" alt="">
-                        </div>
-                        <div class="user-desc">
-                            <span class="name">James Anderson</span>
-                            <span class="desc">There are new settings available</span>
-                            <span class="time">2 days ago</span>
-                        </div>
-                    </a>
-                </li>
-                <li class="list-group-item active">
-                    <a href="#" class="user-list-item">
-                        <div class="icon bg-warning">
-                            <i class="zmdi zmdi-settings"></i>
-                        </div>
-                        <div class="user-desc">
-                            <span class="name">Settings</span>
-                            <span class="desc">There are new settings available</span>
-                            <span class="time">1 day ago</span>
-                        </div>
-                    </a>
-                </li>
-            </ul>
-        </div>
-    </div>
-    <!-- /Right-bar -->
 
 </div>
 <!-- END wrapper -->

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 
@@ -19,11 +19,72 @@ use App\Models\Inf_lokasi;
 
 class PaketController extends BaseController {
 
-  /**
-   * Display a listing of the resource.
-   *
-   * @return Response
-   */
+  public function __construct(){
+    $this->middleware('auth');
+    $this->middleware('admin');
+  }
+  
+  public function showAll()
+  {
+    $data['query'] = DB::table('adventures')->get();
+    return view('admin.product',$data);
+  }
+
+  public function createByAdmin()
+  {
+    //jenis adv
+    $data['query'] = DB::table('adventures')->get();
+
+    //id agent
+    $data['query1'] = DB::table('agents')->get();
+
+    //provinsi
+    $data['query3'] = DB::table('inf_lokasi')->where('lokasi_kabupatenkota', '00')->where('lokasi_kecamatan', '00')->where('lokasi_kelurahan', '0000')->orderby('lokasi_nama')->get();
+
+    //kota
+    $data['query4'] = DB::table('inf_lokasi')->where('lokasi_kecamatan', '00')->where('lokasi_kelurahan', '0000')->orderby('lokasi_propinsi')->get();
+    return view('admin.createproduct',$data);
+  }
+
+  public function storeByAdmin(Request $request)
+  {
+    $paket = new Paket;
+    $paket->agents_id = $request->idagent;
+    $paket->judul = $request->title;
+    $paket->description = $request->description;
+    $paket->price = $request->price;
+    $paket->adv_id = $request->id_adv;
+    $paket->id_lokasi = $request->lokasi_ID;
+    $paket->schedule_id = $request->price;
+    $paket->detail = $request->price;    
+
+    //simpan gambar
+    $filePaket = $request->username. '_diri.png';
+    $request->file('product')->storeAs("public\product",$filePaket);
+    $paket->product = $filePaket;
+    $paket->save();
+
+    $schedule = new schedule();
+    $schedule->id_paket = $paket->id;
+    $schedule->start_date = $request->start_date;
+    $schedule->end_date = $request->end_date;
+    // $schedule->paket_id = $request->nomorid;
+    $schedule->start_point = $request->pickuppoint;
+    $schedule->end_point = $request->endpoint;
+    $schedule->maxpeople = $request->peserta;
+    $schedule->save();
+
+    $activity = new activity();
+    $activity->id_paket = $paket->id;
+    $activity->event = $request->kegiatan;
+    $activity->save();
+  
+    return redirect ('/dash/products');
+    }
+
+
+////BATAS
+
   public function index()
   {
    return view('product_detail');
@@ -34,10 +95,7 @@ class PaketController extends BaseController {
    *
    * @return Response
    */
-  public function create()
-  {
-
-  }
+  
 
   /**
    * Store a newly created resource in storage.
@@ -82,11 +140,7 @@ class PaketController extends BaseController {
    * @param  int  $id
    * @return Response
    */
-  public function showAll()
-  {
-    $data['query'] = DB::table('adventures')->get();
-    return view('admin.product',$data);
-  }
+
 
   public function show($id)
   {

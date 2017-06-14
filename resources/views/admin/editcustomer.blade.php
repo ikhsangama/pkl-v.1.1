@@ -1,6 +1,6 @@
 @extends('layouts.side')
 
-@section('title', 'Create Customer')
+@section('title', 'Edit Customer')
 
 @section('content')
 
@@ -70,7 +70,7 @@
                   <li class="text-muted menu-title">Navigation</li>
 
                     <li>
-                        <a href="/dashboard" class="waves-effect"><i class="zmdi zmdi-view-dashboard"></i> <span> Dashboard </span> </a>
+                        <a href="/dash" class="waves-effect"><i class="zmdi zmdi-view-dashboard"></i> <span> Dashboard </span> </a>
                     </li>
 
                     <li>
@@ -78,7 +78,7 @@
                     </li>
 
                     <li>
-                        <a href="/dash/agents" class="waves-effect"><i class="zmdi zmdi-account-box"></i> <span> Agents </span> </a>
+                        <a href="/dash/agents" class="waves-effect "><i class="zmdi zmdi-account-box"></i> <span> Agents </span> </a>
 
                     <li>
                         <a href="/dash/customers" class="waves-effect active"><i class="zmdi zmdi-account-box-o"></i><span> Customers </span> </a>
@@ -99,108 +99,86 @@
     <!-- ============================================================== -->
     <div class="content-page">
         <!-- Start content -->
-	<div class="content">
-			<div class="container">
-				<div class="row">
-					<div class="col-sm-12">
+  <div class="content">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12">
                         <div class="panel">
                             <div class="panel-body">
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <div class="m-b-30">
                                             <a href="/dash/customercreate" class="btn btn-primary waves-effect waves-light">Add Customer <i class="fa fa-plus"></i></a>
-                                            <a href="/dash/customers" class="btn btn-primary waves-effect waves-light">List Customer <i class="fa fa-list"></i></a>
+                                            <a href="/dash/customer" class="btn btn-primary waves-effect waves-light">List Customer <i class="fa fa-list"></i></a>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-sm-10">
-							<div class="text-center">
+                             <div class="text-center">
                                 <a href="index.html" class="logo"><span>NEKANEKA</span></span></a>
-                                <h5 class="text-muted m-t-0 font-600">Add Customer</h5><br/>
+                                <h5 class="text-muted m-t-0 font-600">Edit Customer</h5><br/>
                             </div>
-								<div class="col-sm-offset-2 col-sm-7">
-									<form class="form-horizontal" role="form" method="POST"
-                                    action="{{ URL('dash/customers')}}" accept-charset="UTF-8" enctype="multipart/form-data">
-                                    <!-- {{ csrf_field() }} -->
+                <!-- MULAI FORM EDIT -->
+                                <form class="" action="/dash/customer/{{$user->id}}/update" method="POST">
+                                <div class="row">
+                                    <div class="col-md-6" >
                                         <div class="form-group">
-                                            <label class="col-md-2 control-label">Username</label>
-                                                <div class="col-md-10">
-                                                    <input type="text" name="username" class="form-control" placeholder="Username">
-                                                </div>
+                                            <label for="field-2" class="control-label">Username</label>
+                                            <input name="username" type="text" class="form-control" value="{{$user->username}}">
                                         </div>
-                                        <div class="form-group ">
-                                        	<label class="col-md-2 control-label" placeholder="Password">Password</label>
-					                            <div class="col-md-10">
-					                                <input class="form-control" name="password" id="password" type="password" placeholder="Password">
-					                            </div>
-				                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
                                         <div class="form-group">
-                                            <label class="col-md-2 control-label">First Name</label>
-                                                <div class="col-md-10">
-                                                    <input type="text" name="fname" class="form-control" placeholder="First Name" required/>
-                                                </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="col-md-2 control-label">Last Name</label>
-                                                <div class="col-md-10">
-                                                    <input type="text" name="lname" class="form-control" placeholder="Last Name" required/>
-                                                </div>
-                                        </div>
-										<div class="form-group">
-											<label class="col-md-2 control-label" placeholder="">E-Mail</label>
-												<div class="col-md-10">
-													<input type="text" name="email" class="form-control" placeholder="E-Mail" required/>
-												</div>
-										</div>
-										<div class="form-group">
-											<label class="col-md-2 control-label" placeholder="Address">Address</label>
-												<div class="col-md-10">
-													<input type="text" name="address" class="form-control" placeholder="Address" required/>
-												</div>
-										</div>
-                                        <div class="form-group">
-                                                <label class="col-md-2 control-label" placeholder="Alamat">Phone</label>
-                                                <div class="col-md-10">
-                                                    <input type="text" name="phone" placeholder="Phone" class="form-control" required>
-                                                </div>
-                                        </div>
-										<div class="form-group">
-                                        <label class="col-sm-2 control-label">Gender</label>
-                                            <div class="col-sm-1">
-                                                <div class="radio radio-custom">
-                                                    <input type="radio" name="gender" id="male" value="male" checked>
-                                                    <label for="male">
-                                                        Male
-                                                    </label>
-                                                </div>
-                                                <div class="radio radio-custom">
-                                                    <input type="radio" name="gender" id="female" value="female">
-                                                    <label for="female">
-                                                        Female
-                                                    </label>
-                                                </div>
-                                                <div class="radio radio-custom">
-                                                    <input type="radio" name="gender" id="other" value="other">
-                                                    <label for="other">
-                                                        Other
-                                                    </label>
-                                                </div>
+                                            <label for="field-2" class="control-label">Tanggal Lahir</label>
+                                            <div class="input-group">
+                                                <input type="text" name="tanggallahir" class="form-control" placeholder="mm/dd/yyyy" id="datepicker" value="{{$customer->tanggallahir}}">
+                                                  <span class="input-group-addon bg-primary b-0 text-white"><i class="ti-calendar"></i></span>
                                             </div>
                                         </div>
-			                            <div class="form-group">
-											<label class="control-label col-sm-2">Tanggal Lahir</label>
-												<div class="col-sm-8">
-													<div class="input-group">
-														<input type="text" name="tanggallahir" class="form-control" placeholder="mm/dd/yyyy" id="datepicker" required>
-															<span class="input-group-addon bg-primary b-0 text-white"><i class="ti-calendar"></i></span>
-														</div><!-- input-group -->
-												</div>
-										</div>
-										<div class="form-group">
-                                        <label class="col-sm-2 control-label">Nationality</label>
-                                            <div class="col-sm-10">
-                                                <select class="form-control select2" name="nationality">
-                                                    <option value=""> Select Your Nationality </option>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="field-3" class="control-label">E-mail</label>
+                                            <input name="email" type="text" class="form-control" value="{{$user->email}}">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="field-1" class="control-label">Firstname</label>
+                                            <input name="firstname" type="text" class="form-control" value="{{$customer->firstname}}">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="field-4" class="control-label">Lastname</label>
+                                            <input name="lastname" type="text" class="form-control" value="{{$customer->lastname}}">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label for="field-5" class="control-label">Alamat</label>
+                                            <input name="alamat" type="text" class="form-control" value="{{$customer->alamat}}">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="field-6" class="control-label">Phone</label>
+                                            <input name="phone" type="text" class="form-control" value="{{$customer->phone}}">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="field-8" class="control-label">Nationality</label>
+                                            <select class="form-control" name="nationality">
+                                                    <option value="{{$customer->nationality}}" selected>{{$customer->nationality}}</option>
                                                     <option value="afghan">Afghan</option>
                                                     <option value="albanian">Albanian</option>
                                                     <option value="algerian">Algerian</option>
@@ -394,30 +372,26 @@
                                                     <option value="zambian">Zambian</option>
                                                     <option value="zimbabwean">Zimbabwean</option>
                                                 </select>
-                                            </div>
                                         </div>
-                                        <div class="container">
-                                            <div class="row">
-                                                <label class="col-sm-2 control-label">Foto</label>
-                                                    <div class="col-sm-10">
-                                                        <div class="card-box">
-                                                                <input type="file" name="foto" class="dropify" data-height="200" />
-                                                        </div>
-                                                    </div>
-                                            </div>
-                                        </div>
-										<div class="form-group text-center">
-											<div class="col-xs-12">
-												{{ csrf_field() }}
-												<button class="btn btn-custom btn-bordred btn-block waves-effect waves-light" type="submit">
-													Submit
-												</button>
-											</div>
-										</div>
-									</form>
-								</div>
-							</div>
-                        	</div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="user-img">
+                                    <label for="field-8" class="control-label">Foto</label></br>                                    
+                                        <img src="{{ asset('storage/fotocustomer/' .$customer->foto) }}" alt="user-img" class="img-thumbnail img-responsive" width="200px" height="200px">
+                                    </div>
+                                </div>
+                                <div class="form-group text-center">
+                                  <input type="hidden" name="_method" value="PUT">
+                                    {{ csrf_field() }}
+                                  <input type="submit" class="btn" value="Save">
+                                </div>
+                                </form>
+                                <!-- AKHIR FORM EDIT -->
+
+                              </div>
+                           </div>
+                          </div>
                         </div> <!-- end panel -->
                     </div> <!-- end col-->
                 </div><!-- end row -->
@@ -430,7 +404,6 @@
         </footer>
 
     </div>
-
 </div>
 <!-- END wrapper -->
 

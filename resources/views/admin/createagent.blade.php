@@ -31,27 +31,6 @@
                     </li>
                 </ul>
 
-                <!-- Right(Notification and Searchbox -->
-                <ul class="nav navbar-nav navbar-right">
-                    <li>
-                        <!-- Notification -->
-                        <div class="notification-box">
-                            <ul class="list-inline m-b-0">
-                                <li>
-                                    <a href="javascript:void(0);" class="right-bar-toggle">
-                                        <i class="zmdi zmdi-notifications-none"></i>
-                                    </a>
-                                    <div class="noti-dot">
-                                        <span class="dot"></span>
-                                        <span class="pulse"></span>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                        <!-- End Notification bar -->
-                    </li>
-                </ul>
-
             </div><!-- end container -->
         </div><!-- end navbar -->
     </div>
@@ -72,10 +51,15 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="text-custom">
+                        <a href="{{ url('/logout') }}" class="text-custom"
+                        onclick="event.preventDefault();
+                                 document.getElementById('logout-form').submit();">
                             <i class="zmdi zmdi-power"></i>
                         </a>
                     </li>
+                    <form id="logout-form" action="{{ url('/logout') }}" method="POST">
+                    {{ csrf_field() }}
+                    </form>
                 </ul>
             </div>
             <!-- End User -->
@@ -86,7 +70,7 @@
                   <li class="text-muted menu-title">Navigation</li>
 
                     <li>
-                        <a href="dashboard" class="waves-effect"><i class="zmdi zmdi-view-dashboard"></i> <span> Dashboard </span> </a>
+                        <a href="/dash" class="waves-effect"><i class="zmdi zmdi-view-dashboard"></i> <span> Dashboard </span> </a>
                     </li>
 
                     <li>
@@ -124,7 +108,7 @@
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <div class="m-b-30">
-                                            <a href="agentcreate" class="btn btn-primary waves-effect waves-light">Add Agent <i class="fa fa-plus"></i></a>
+                                            <a href="/dash/agentcreate" class="btn btn-primary waves-effect waves-light">Add Agent <i class="fa fa-plus"></i></a>
                                             <a href="/dash/agents" class="btn btn-primary waves-effect waves-light">List Agent <i class="fa fa-list"></i></a>
                                         </div>
                                     </div>
@@ -171,25 +155,29 @@
 										<div class="form-group">
 											<label class="col-sm-2 control-label">Provinsi</label>
 												<div class="col-md-10">
-													<select class="form-control" name="province">
-														<option>1</option>
-														<option>2</option>
-														<option>3</option>
-														<option>4</option>
-														<option>5</option>
-	                                                </select>
+		                                            <select class="form-control" name="province">
+                                                        <option value="P0" selected disabled>Provinsi</option>
+                                                        @foreach($query as $result)
+                                                        <option value="{{$result->lokasi_nama}}">
+                                                        <?php
+                                                            echo $result->lokasi_nama
+                                                        ?></option>
+                                                        @endforeach
+                                                    </select>
 	                                            </div>
 										</div>
 										<div class="form-group">
 											<label class="col-sm-2 control-label">Kabupaten</label>
 												<div class="col-md-10">
 													<select class="form-control" name="city">
-														<option>1</option>
-														<option>2</option>
-														<option>3</option>
-														<option>4</option>
-														<option>5</option>
-	                                                </select>
+                                                        <option value="K0" selected disabled>Kabupaten</option>
+                                                        @foreach($query1 as $result)
+                                                        <option value="{{$result->lokasi_nama}}">
+                                                        <?php
+                                                            echo $result->lokasi_nama
+                                                        ?></option>
+                                                        @endforeach
+                                                    </select>
 	                                            </div>
 										</div>
 										<div class="form-group">
@@ -223,8 +211,8 @@
 										<label class="col-sm-2 control-label">Bahasa</label>
 											<div class="col-sm-10">
 												<select class="form-control select2" name="bahasa">
-													<option value="ID">Indonesia</option>
-													<option value="ENG">English</option>
+													<option value="Indonesia">Indonesia</option>
+													<option value="English">English</option>
 												</select>
 											</div>
 										</div>
@@ -276,84 +264,6 @@
         </footer>
 
     </div>
-    <!-- ============================================================== -->
-    <!-- End Right content here -->
-    <!-- ============================================================== -->
-
-
-    <!-- Right Sidebar -->
-    <div class="side-bar right-bar">
-        <a href="javascript:void(0);" class="right-bar-toggle">
-            <i class="zmdi zmdi-close-circle-o"></i>
-        </a>
-        <h4 class="">Notifications</h4>
-        <div class="notification-list nicescroll">
-            <ul class="list-group list-no-border user-list">
-                <li class="list-group-item">
-                    <a href="#" class="user-list-item">
-                        <div class="avatar">
-                            <img src="assets/images/users/avatar-2.jpg" alt="">
-                        </div>
-                        <div class="user-desc">
-                            <span class="name">Michael Zenaty</span>
-                            <span class="desc">There are new settings available</span>
-                            <span class="time">2 hours ago</span>
-                        </div>
-                    </a>
-                </li>
-                <li class="list-group-item">
-                    <a href="#" class="user-list-item">
-                        <div class="icon bg-info">
-                            <i class="zmdi zmdi-account"></i>
-                        </div>
-                        <div class="user-desc">
-                            <span class="name">New Signup</span>
-                            <span class="desc">There are new settings available</span>
-                            <span class="time">5 hours ago</span>
-                        </div>
-                    </a>
-                </li>
-                <li class="list-group-item">
-                    <a href="#" class="user-list-item">
-                        <div class="icon bg-pink">
-                            <i class="zmdi zmdi-comment"></i>
-                        </div>
-                        <div class="user-desc">
-                            <span class="name">New Message received</span>
-                            <span class="desc">There are new settings available</span>
-                            <span class="time">1 day ago</span>
-                        </div>
-                    </a>
-                </li>
-                <li class="list-group-item active">
-                    <a href="#" class="user-list-item">
-                        <div class="avatar">
-                            <img src="assets/images/users/avatar-3.jpg" alt="">
-                        </div>
-                        <div class="user-desc">
-                            <span class="name">James Anderson</span>
-                            <span class="desc">There are new settings available</span>
-                            <span class="time">2 days ago</span>
-                        </div>
-                    </a>
-                </li>
-                <li class="list-group-item active">
-                    <a href="#" class="user-list-item">
-                        <div class="icon bg-warning">
-                            <i class="zmdi zmdi-settings"></i>
-                        </div>
-                        <div class="user-desc">
-                            <span class="name">Settings</span>
-                            <span class="desc">There are new settings available</span>
-                            <span class="time">1 day ago</span>
-                        </div>
-                    </a>
-                </li>
-            </ul>
-        </div>
-    </div>
-    <!-- /Right-bar -->
-
 </div>
 <!-- END wrapper -->
 
