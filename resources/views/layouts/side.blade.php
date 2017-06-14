@@ -281,6 +281,9 @@
             jQuery('#datepicker').datepicker({
                 format: "yyyy-mm-dd"
             });
+            jQuery('#datepicker1').datepicker({
+                format: "yyyy-mm-dd"
+            });
             jQuery('#datepicker-autoclose').datepicker({
                 autoclose: true,
                 todayHighlight: true

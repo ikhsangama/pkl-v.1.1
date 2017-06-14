@@ -53,6 +53,8 @@ Route::group(['middleware' => 'admin'], function(){
 	Route::get('dash/products', 'Admin\PaketController@showAll');
 	//form create
 	Route::get('dash/productcreate', 'Admin\PaketController@createByAdmin');
+	//store ke db
+	Route::post('dash/products', 'Admin\PaketController@storeByAdmin');
 });
 
 //CUSTOMER, LEVEL 1

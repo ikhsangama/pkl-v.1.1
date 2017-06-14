@@ -33,7 +33,7 @@ class AgentsController extends BaseController {
     // $user_id = DB::table('users')->where('level', 2)->pluck('id');
     $agents = DB::table('agents')->leftJoin('users', 'agents.user_id', '=', 'users.id')->where('level', 2)->get();
     //hasilnya ID user
-    //$agents = DB::table('users')->leftJoin('agents', 'users.id','=','agents.user_id')->where('level', 2)->get();
+    // $approve = $agents;
     //hasilnya primary ID agent
     return view('admin.agents',[
       'agents'=>$agents,

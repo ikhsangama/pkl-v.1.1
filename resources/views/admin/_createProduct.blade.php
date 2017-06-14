@@ -145,7 +145,7 @@
                                     <div class="form-group">
                                       <label class="col-sm-2 control-label">Kategori</label>
                                         <div class="col-md-10">
-                                          <select class="form-control" name="adv_id" id="adv_id">
+                                          <select class="form-control" name="kategori" id="kategori">
                                             <option value="A0" selected disabled>Select Adventure</option>
                                                 @foreach($query as $result)
                                                 <option value="{{$result->id_adv}}">
@@ -158,24 +158,30 @@
                                     </div>
 
                                     <div class="form-group">
-                                      <label class="control-label col-sm-2">Date 1</label>
+                                      <label class="control-label col-sm-2">Date Range</label>
                                         <div class="col-sm-10">
-                                          <div class="input-group">
-                                            <input type="text" name="start_date" class="form-control" id="datepicker" />
-                                              <span class="input-group-addon bg-primary b-0 text-white"><i class="ti-calendar"></i></span>
+                                          <div class="input-daterange input-group" id="date-range">
+                                            <input type="text" name="start_date" class="form-control" name="start" />
+                                              <span class="input-group-addon bg-primary b-0 text-white">to</span>
+                                                <input type="text" name="end_date" class="form-control" name="end" />
                                           </div>
                                         </div>
                                       </div>
 
                                       <div class="form-group">
-                                        <label class="control-label col-sm-2">Date 2</label>
-                                          <div class="col-sm-10">
-                                            <div class="input-group">
-                                              <input type="text" name="end_date" class="form-control" id="datepicker1" />
-                                                <span class="input-group-addon bg-primary b-0 text-white"><i class="ti-calendar"></i></span>
-                                            </div>
-                                          </div>
+                                      <label class="col-sm-2 control-label">Provinsi</label>
+                                        <div class="col-md-10">
+                                          <select class="form-control" name="province">
+                                            <option value="P0" selected disabled>Provinsi</option>
+                                            @foreach($query3 as $result)
+                                                <option value="{{$result->lokasi_ID}}">
+                                                <?php
+                                                    echo $result->lokasi_nama
+                                                ?></option>
+                                            @endforeach
+                                            </select>
                                         </div>
+                                    </div>
 
                                     <div class="form-group">
                                       <label class="col-sm-2 control-label">Kota</label>
@@ -183,7 +189,7 @@
                                           <select class="form-control" name="city">
                                                 <option value="K0" selected disabled>Kabupaten</option>
                                                 @foreach($query4 as $result)
-                                                <option value="{{$result->lokasi_ID}}">
+                                                <option value="{{$result->lokasi_nama}}">
                                                 <?php
                                                     echo $result->lokasi_nama
                                                 ?></option>
@@ -228,14 +234,16 @@
                                     </div>
 
                                     <div class="container">
-                                        <div class="row">
-                                            <label class="col-sm-2 control-label">Foto</label>
-                                                <div class="col-sm-10">
-                                                    <div class="card-box">
-                                                            <input type="file" name="product" class="dropify" data-height="200" />
-                                                    </div>
-                                                </div>
-                                        </div>
+                                      <div class="row">
+
+                                        <label class="col-sm-2 control-label">Foto Paket</label>
+                                          <div class="col-sm-10">
+                                              <div class="card-box">
+                                                <input type="file" name="product" class="dropify" data-height="200" />
+                                              </div>
+                                          </div>
+
+                                      </div>
                                     </div>
 
                                     <div class="form-group">

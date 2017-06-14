@@ -16,6 +16,10 @@ use App\Models\Activity;
 use DB;
 use App\Models\Adventures;
 use App\Models\Inf_lokasi;
+//file
+use App\Http\Requests;
+use File;
+use Storage;
 
 class PaketController extends BaseController {
 
@@ -23,7 +27,7 @@ class PaketController extends BaseController {
     $this->middleware('auth');
     $this->middleware('admin');
   }
-  
+
   public function showAll()
   {
     $data['query'] = DB::table('adventures')->get();
@@ -48,37 +52,37 @@ class PaketController extends BaseController {
 
   public function storeByAdmin(Request $request)
   {
+    // dd($request);
     $paket = new Paket;
     $paket->agents_id = $request->idagent;
     $paket->judul = $request->title;
     $paket->description = $request->description;
     $paket->price = $request->price;
-    $paket->adv_id = $request->id_adv;
-    $paket->id_lokasi = $request->lokasi_ID;
-    $paket->schedule_id = $request->price;
-    $paket->detail = $request->price;    
+    $paket->adv_id = $request->adv_id;
+    $paket->lokasi_id = $request->city;
+    $paket->detail = $request->detail;
 
     //simpan gambar
-    $filePaket = $request->username. '_diri.png';
+    $filePaket = $request->idagent.'_'.$request->title.'.png';
     $request->file('product')->storeAs("public\product",$filePaket);
-    $paket->product = $filePaket;
+    $paket->multipic = $filePaket;
     $paket->save();
 
+    // dd($paket->id);
     $schedule = new schedule();
-    $schedule->id_paket = $paket->id;
+    $schedule->paket_id = $paket->id;
     $schedule->start_date = $request->start_date;
     $schedule->end_date = $request->end_date;
-    // $schedule->paket_id = $request->nomorid;
     $schedule->start_point = $request->pickuppoint;
     $schedule->end_point = $request->endpoint;
     $schedule->maxpeople = $request->peserta;
     $schedule->save();
 
     $activity = new activity();
-    $activity->id_paket = $paket->id;
-    $activity->event = $request->kegiatan;
+    $activity->paket_id = $paket->id;
+    $activity->event = $request->event;
     $activity->save();
-  
+
     return redirect ('/dash/products');
     }
 
@@ -95,7 +99,7 @@ class PaketController extends BaseController {
    *
    * @return Response
    */
-  
+
 
   /**
    * Store a newly created resource in storage.
