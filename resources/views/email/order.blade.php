@@ -18,11 +18,6 @@
 
 
 <body style="margin: 0; padding: 0; width: 100%; background-color: #F2F4F6;">
-  <h1>{{$user->email}}</h1>
-  <h2>{{$booking->id}}</h2>
-  <h2>{{$lokasi->lokasi_nama}}</h2>
-  <h2>{{$schedule->start_date}}</h2>
-  <h2>{{$schedule->end_date}}</h2>
     <table width="100%" cellpadding="0" cellspacing="0">
         <tr>
             <td style="width: 100%; margin: 0; padding: 0; background-color: #F2F4F6;" align="center">
@@ -43,10 +38,7 @@
                                 <tr>
                                     <td style="font-family: Arial, &#039;Helvetica Neue&#039;, Helvetica, sans-serif; padding: 35px;">
                                         <!-- Greeting -->
-                                        <h1 style="margin-top: 0; color: #2F3133; font-size: 19px; font-weight: bold; text-align: left;">
-                                                                                                                                                Hello!
-                                                                                                                                    </h1>
-
+                                        <h1 style="margin-top: 0; color: #2F3133; font-size: 19px; font-weight: bold; text-align: left;">Hello {{$user->username}}</h1>
                                         <!-- Intro -->
                                                                                     <p style="margin-top: 0; color: #74787E; font-size: 16px; line-height: 1.5em;">
                                                 You are receiving this email because you have booked a package trip on NEKANEKA.
@@ -54,10 +46,68 @@
                                             <p style="margin-top: 0; color: #74787E; font-size: 16px; line-height: 1.5em;">
                                                 Here are the details of your trip :
                                             </p>
-                                            <br/>
+                                            <div class="row">
+                                                <table>
+                                                    <tr>
+                                                        <th>
+                                                        <p style="padding-left: 16px; margin-top: 0; color: #74787E; font-size: 16px; line-height: 1.5em;">Booking ID</p>
+                                                        </th>
+                                                        <td>
+                                                        <p style="margin-top: 0; color: #74787E; font-size: 16px; line-height: 1.5em;">:</p>
+                                                        </td>
+                                                        <td>
+                                                        <p style="margin-top: 0; color: #74787E; font-size: 16px; line-height: 1.5em;">{{$booking->id}}</p>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>
+                                                        <p style="padding-left: 23px; margin-top: 0; color: #74787E; font-size: 16px; line-height: 1.5em;">Participants</p>
+                                                        </th>
+                                                        <td>
+                                                        <p style="margin-top: 0; color: #74787E; font-size: 16px; line-height: 1.5em;">:</p>
+                                                        </td>
+                                                        <td>
+                                                        <p style="margin-top: 0; color: #74787E; font-size: 16px; line-height: 1.5em;">{{$booking->participants}}</p>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>
+                                                        <p style="margin-top: 0; color: #74787E; font-size: 16px; line-height: 1.5em;">Location</p>
+                                                        </th>
+                                                        <td>
+                                                        <p style="margin-top: 0; color: #74787E; font-size: 16px; line-height: 1.5em;">:</p>
+                                                        </td>
+                                                        <td>
+                                                        <p style="margin-top: 0; color: #74787E; font-size: 16px; line-height: 1.5em;">{{$lokasi->lokasi_nama}}</p>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>
+                                                        <p style="padding-left: 6px; margin-top: 0; color: #74787E; font-size: 16px; line-height: 1.5em;">Start Date</p>
+                                                        </th>
+                                                        <td>
+                                                        <p style="margin-top: 0; color: #74787E; font-size: 16px; line-height: 1.5em;">:</p>
+                                                        </td>
+                                                        <td>
+                                                        <p style="margin-top: 0; color: #74787E; font-size: 16px; line-height: 1.5em;">{{$schedule->start_date}}</p>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>
+                                                        <p style="padding-left: 2px; margin-top: 0; color: #74787E; font-size: 16px; line-height: 1.5em;">End Date</p>
+                                                        </th>
+                                                        <td>
+                                                        <p style="margin-top: 0; color: #74787E; font-size: 16px; line-height: 1.5em;">:</p>
+                                                        </td>
+                                                        <td>
+                                                        <p style="margin-top: 0; color: #74787E; font-size: 16px; line-height: 1.5em;">{{$schedule->end_date}}</p>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </div><!-- 
                                             <p style="margin-top: 0; color: #74787E; font-size: 16px; line-height: 1.5em;">
 
-                                            </p>
+                                            </p> -->
 
                                         <!-- Action Button -->
                                                                                     <!-- <table style="width: 100%; margin: 30px auto; padding: 0; text-align: center;" align="center" width="100%" cellpadding="0" cellspacing="0">
@@ -77,9 +127,6 @@
                                             </table> -->
 
                                         <!-- Outro -->
-                                                                                    <p style="margin-top: 0; color: #74787E; font-size: 16px; line-height: 1.5em;">
-                                                If you did not request a password reset, no further action is required.
-                                            </p>
 
                                         <!-- Salutation -->
                                         <p style="margin-top: 0; color: #74787E; font-size: 16px; line-height: 1.5em;">

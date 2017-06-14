@@ -256,6 +256,9 @@
 									<input type="hidden" value="{{$query2}}" id="customer">
 									<button class="booking-button" id="booking">BOOK THIS TRIP</button>
 								</div>
+								@if(session('warning'))
+                                    {{session('warning')}}
+                                @endif
 							</div>
 						</div>
 					</div>

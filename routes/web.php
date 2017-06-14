@@ -54,9 +54,6 @@ Route::group(['middleware' => 'customer'], function(){
 	Route::post('/createbooking/{idpaket}/{iduser}', 'BookingController@store');
 	//akhircoba
 
-	// Route::post('/createbooking/{id}/{$user->id}', 'BookingController@store');
-	// Route::post('/createbooking/{id}/{$user->id}', 'BookingController@mail');
-	// Route::get('/detail/{id}', 'ListingController@detail');
 });
 
 //AGENT, LEVEL 2
@@ -81,8 +78,3 @@ Route::get('/detail/{id}', 'ListingController@detail');
 Route::get('/verify/{ver_token}/{id}','Auth\RegisterController@verify_register');
 
 Auth::routes();
-
-// Booking Form
-// Route::get('/booking', function () {
-//     return view('bookingform');
-// });

@@ -51,6 +51,7 @@
             </ul>
           </li>
         </ul>
+
 @if (Auth::guest())
         <ul class="nav navbar-nav navbar-right">
           <li><a href="/login"><span class="glyphicon glyphicon-lock"></span> Sign In </a></li>
@@ -82,6 +83,18 @@
           </form>
         </ul>
 @endif
+      </div>
+      <div class="row">
+        @if(session('status'))
+            <div class="alert alert-success" role="alert" style="text-align:center;">
+              <strong>Success:</strong> {{session('status')}}
+            </div>
+        @endif
+        @if(session('warningdetail'))
+            <div class="alert alert-warning" role="alert" style="text-align:center;">
+              <strong>Warning:</strong> {{session('warningdetail')}}
+            </div>
+        @endif
       </div>
     </nav>
 
@@ -345,7 +358,7 @@
           <div class="navbar-bottom pull-right">
             <ul class="bottombar-menu">
               <li>
-                <a href="#">HOME</a>
+                <a href="/">HOME</a>
               </li>
               <li>
                 <a href="#">DESTINATIONS</a>

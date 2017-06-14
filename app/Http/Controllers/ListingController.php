@@ -88,7 +88,7 @@ class ListingController extends Controller
         //
     }
 
-    public function detail($id)
+    public function detail(Request $request, $id)
     {
         $paket_id=$id;
         $pakets = Paket::where('id','=',$paket_id)->get();
@@ -97,7 +97,8 @@ class ListingController extends Controller
           $query2 = "NULL";
           // dd($pakets, $query2);
           // return redirect('/login')->with('warning', 'Silahkan login terlebih dahulu');
-          return view('customer.detail',['id'=>$id, 'pakets'=>$pakets,'query2'=>$query2]);
+          $request->session()->flash('warningdetail', 'Silahkan login terlebih dahulu untuk memesan paket');
+          return view('/detail',['id'=>$id, 'pakets'=>$pakets,'query2'=>$query2]);
         }
         $query2 = Auth::user()->id;
         // dd($id,$pakets,$query2);

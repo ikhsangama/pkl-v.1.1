@@ -65,11 +65,14 @@ class BookingController extends Controller
       $booking->participants = $request->participants;
       $booking->kode_booking = str_random(20);
 
+      $booking->payment_stat = 0;
+
       $booking->save();
 
       //kirim mail
       $user = User::find($iduser);
       $user_email = $user->email;
+      // $username = $username;
 
       $paket_id = $booking->paket_id;
       $id_lokasi = Paket::find($paket_id)->id_lokasi;
@@ -79,6 +82,7 @@ class BookingController extends Controller
       $schedule = Schedule::find($schedule_id);
       // dd($booking, $user_email);
       event(new BookingCreated($booking, $user, $lokasi, $schedule));
+      $request->session()->flash('status', 'Rincian Paket Perjalanan Telah Dikirim ke Email Anda');
       return redirect('/');
       // Mail::to($user_email)->send(new userOrder($user, $booking));
     }
@@ -140,10 +144,10 @@ class BookingController extends Controller
         // Mail::send('email.order', $data, function($message){
         //     $message->to($data->['email']);
         // });
-        dd($user, $data);
+        // dd($user, $data);
         Mail::to($request->email)->send(new userOrder($user, $data));
 // dd("s");
-        Session::flash('success','Travel Package Details have been Sent to Your Email');
+        // Session::flash('success','Travel Package Details have been Sent to Your Email');
 
         return redirect('/');
     }

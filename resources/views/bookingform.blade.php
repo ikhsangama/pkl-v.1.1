@@ -50,7 +50,8 @@
                     <div class="form-group ">
                         <div class="row">
                             <div class="col-xs-12 col-sm-12 col-md-12">
-                                <input class="form-control" name="username" type="text" placeholder="Your Username" value="{{$user->username}}" required autofocus>
+                            <label class="control-label" style="position: absolute; top: -32px;" for="example-input1-group1">Username</label>
+                                <input class="form-control" name="username" type="text" placeholder="Your Username" value="{{$user->username}}" required disabled>
                                 <!-- validation-->
                                 @if ($errors->has('username'))
                                 <!-- <div class="container red-text text accent-3"> -->
@@ -63,7 +64,8 @@
                         <br>
                         <div class="row">
                             <div class="col-xs-12 col-sm-12 col-md-12">
-                                <input class="form-control" name="email" type="email" placeholder="Your Email" value="{{$user->email}}" required>
+                            <label class="control-label" style="position: relative; top: -18px;" for="example-input1-group1">Email</label>
+                                <input class="form-control" style="position: relative;  top: -14px;" name="email" type="email" placeholder="Your Email" value="{{$user->email}}" required disabled>
                                 <!-- validation-->
                                 @if ($errors->has('email'))
                                 <!-- <div class="container red-text text accent-3"> -->
@@ -76,7 +78,8 @@
                         <br>
                         <div class="row">
                             <div class="col-xs-12 col-sm-12 col-md-12">
-                                <input class="form-control" name="phone" type="text" placeholder="Your Phone Number" value="{{$user->customer->phone}}" required>
+                            <label class="control-label" style="position: relative; top: -32px;" for="example-input1-group1">Phone</label>
+                                <input class="form-control" style="position: relative;  top: -28px;" name="phone" type="text" placeholder="Your Phone Number" value="{{$user->customer->phone}}" required disabled>
                                 <!-- validation-->
                                 @if ($errors->has('phone'))
                                 <!-- <div class="container red-text text accent-3"> -->
@@ -87,19 +90,20 @@
                             </div>
                         </div>
                         <br>
-                        <label class="control-label partisipan" for="example-input1-group1">Participants</label>
+                        <label class="control-label" style="position: relative; top: -44px;" for="example-input1-group1">Participants</label>
                         <div class="form-group">
                             <div class="col-sm-3">
                                 <input type="hidden" value="{{$pakets}}">
                                 @foreach ($schedule as $sch)
-                                    <input type="number" name="participants" min="1" max="{{$sch->maxpeople}}">
+                                    <input type="number" style="position: relative;  top: -40px;"  name="participants" min="1" max="{{$sch->maxpeople}}">
                                 @endforeach
                             </div>
                         </div>
                         <br>
                         <div class="row">
                             <div class="col-xs-12 col-sm-12 col-md-12">
-                                <textarea class="form-control" rows="5" name="alamat" placeholder="Your Address" required>{{$user->customer->alamat}}</textarea>
+                            <label class="control-label" style="position: relative; top: -74px;" for="example-input1-group1">Address</label>
+                                <textarea class="form-control" rows="5" style="position: relative;  top: -70px;" name="alamat" placeholder="Your Address" required disabled>{{$user->customer->alamat}}</textarea>
                                 <!-- validation-->
                                 @if ($errors->has('alamat'))
                                 <!-- <div class="container red-text text accent-3"> -->
@@ -113,7 +117,7 @@
 
                     <div class="form-group text-center m-t-40">
                         <div class="col-xs-12 col-sm-12 col-md-12">
-                            <button class="btn btn-custom btn-bordred btn-block waves-effect waves-light" type="submit">
+                            <button class="btn btn-custom btn-bordred btn-block waves-effect waves-light" style="position: relative; top: -100px;" type="submit">
                                 Book Now
                             </button>
                         </div>
