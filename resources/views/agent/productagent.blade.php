@@ -1,6 +1,6 @@
 @extends('layouts.side')
 
-@section('title', 'Product')
+@section('title', 'Product Agent')
 
 @section('content')
 
@@ -30,7 +30,6 @@
                         <h4 class="page-title">Product</h4>
                     </li>
                 </ul>
-
             </div><!-- end container -->
         </div><!-- end navbar -->
     </div>
@@ -43,7 +42,7 @@
 
             <!-- User -->
             <div class="user-box">
-                <h5><a href="#">Admin</a> </h5>
+                <h5><a href="#">Agent</a> </h5>
                 <ul class="list-inline">
                     <li>
                         <a href="/" class="text-custom">
@@ -68,21 +67,15 @@
             <div id="sidebar-menu">
                 <ul>
                   <li class="text-muted menu-title">Navigation</li>
-
                     <li>
-                        <a href="/dash" class="waves-effect"><i class="zmdi zmdi-view-dashboard"></i> <span> Dashboard </span> </a>
+                        <a href="dashboardagent" class="waves-effect"><i class="zmdi zmdi-view-dashboard"></i> <span> Dashboard </span> </a>
                     </li>
-
                     <li>
-                        <a href="/dash/products" class="waves-effect active"><i class="zmdi zmdi-cloud-box"></i> <span> Product </span> </a>
+                        <a href="productagent" class="waves-effect active"><i class="zmdi zmdi-cloud-box"></i> <span> Product </span> </a>
                     </li>
-
                     <li>
-                        <a href="/dash/agents" class="waves-effect"><i class="zmdi zmdi-account-box"></i> <span> Agent </span> </a>
-
-                    <li>
-                        <a href="/dash/customers" class="waves-effect"><i class="zmdi zmdi-account-box-o"></i><span> Customer </span> </a>
-
+                        <a href="bookingagent" class="waves-effect"><i class="zmdi zmdi-email-open"></i> <span> Booking </span> </a>
+                    </li>
                 </ul>
                 <div class="clearfix"></div>
             </div>
@@ -108,10 +101,10 @@
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <div class="m-b-30">
-                                            <a href="/dash/productcreate" class="btn btn-primary waves-effect waves-light">Add Product <i class="fa fa-plus"></i></a>
-                                            <a href="/dash/products" class="btn btn-primary waves-effect waves-light">List Product <i class="fa fa-list"></i></a>
+                                            <a href="productcreate" class="btn btn-primary waves-effect waves-light">Add Product <i class="fa fa-plus"></i></a>
+                                            <a href="productagent" class="btn btn-primary waves-effect waves-light">List Product <i class="fa fa-list"></i></a>
                                         </div>
-                                        <div class="m-b-30">
+                                        <div class="m-b-10">
                                             <h2>Kategori</h2>
                                                 <select class="form-control">
                                                     <option value="" selected disabled>All Adventure</option>
@@ -129,31 +122,27 @@
                                 <div class="">
                                     <table class="table table-striped" id="datatable-editable">
                                         <thead>
-                                            <tr>
+                                           <tr>
                                                 <th>ID</th>
-                                                <th>Agent</th>
                                                 <th>Judul</th>
                                                 <th>Harga</th>
-                                                <th>Jadwal</th>
+                                                
                                                 <th>Peserta</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <tr class="gradeX">
-                                            @foreach($product as $product)
-                                                <td>{{$product->id }}</td>
-                                                <td>{{$product->agents_id }}</td>
-                                                <td>{{$product->judul }}</td>
-                                                <td>Rp. {{$product->price }} /pax</td>
-                                                <td>{{$product->start_date }} s/d {{$product->end_date }}</td>
-                                                <td>{{$product->maxpeople }} orang</td>
+                                                <td>1</td>
+                                                <td>Wisata Bromo</td>
+                                                <td>400000</td>
+                                                
+                                                <td>20</td>
                                                 <td class="actions">
-                                                    <a onclick="" href="/dash/product/{{$product->id}}/edit" class="on-default edit-row"><i class="fa fa-pencil"></i></a>
+                                                    <a onclick="" href="#" class="on-default edit-row"><i class="fa fa-pencil"></i></a>
                                                     <a onclick="" href="#" class="on-default remove-row"><i class="fa fa-trash-o"></i></a>
                                                 </td>
                                             </tr>
-                                            @endforeach
                                         </tbody>
                                     </table>
                                 </div>
@@ -172,7 +161,6 @@
         </footer>
 
     </div>
-
 </div>
 <!-- END wrapper -->
 

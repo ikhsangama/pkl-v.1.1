@@ -22,7 +22,7 @@
 						<p class="section1-subheader2">RIGHT <b>TRAVELLER</b></p>
 					</div>
 				</div>
-				
+
 				<!-- Search Filtering -->
 				<div class="row">
 					<div class="form-group">
@@ -62,7 +62,7 @@
 						</div>
 					</div>
 				</div>
-				
+
 				<!-- Search Button -->
 				<div class="row">
 						<div class="col-md-offset-7 col-sm-offset-7 col-xs-offset-7 col-md-3 col-sm-3 col-xs-3">
@@ -72,7 +72,7 @@
 				</div>
 			</div>
 		</div>
-		
+
 		<!-- Section 2 -->
 		<div class="section2-background">
 			<div class="container">
@@ -87,7 +87,7 @@
 						<!-- Icon -->
 					</div>
 				</div>
-				
+
 				<!-- Description-->
 				<div class="row">
 					<div class="col-md-offset-1 col-sm-offset-1 col-xs-offset-1 col-md-10 col-sm-10 col-xs-10">
@@ -97,7 +97,7 @@
 						</p>
 					</div>
 				</div>
-					
+
 				<!-- Active Tab -->
 				<div class="row">
 					<ul class="nav nav-tabs activetab-position1">
@@ -110,7 +110,7 @@
 												<i class="zmdi zmdi-bike"></i>
 												<p class="bbacycling">CYCLING</p>
 											</div>
-										</polygon>											
+										</polygon>
 									</svg>
 								</a>
 							</li>
@@ -138,7 +138,7 @@
 												<i class="zmdi zmdi-walk"></i>
 												<p class="bbahiking">HIKING</p>
 											</div>
-										</polygon>		
+										</polygon>
 									</svg>
 								</a>
 							</li>
@@ -152,7 +152,7 @@
 												<i class="zmdi zmdi-boat"></i>
 												<p class="bbasailing">SAILING</p>
 											</div>
-										</polygon>		
+										</polygon>
 									</svg>
 								</a>
 							</li>
@@ -166,7 +166,7 @@
 												<i class="zmdi zmdi-compass"></i>
 												<p class="bbapolar">POLAR</p>
 											</div>
-										</polygon>		
+										</polygon>
 									</svg>
 								</a>
 							</li>
@@ -180,14 +180,14 @@
 												<i class="zmdi zmdi-evernote"></i>
 												<p class="bbawildlife">WILDLIFE</p>
 											</div>
-										</polygon>		
+										</polygon>
 									</svg>
 								</a>
 							</li>
 						</div>
 					</ul>
 				</div>
-					
+
 				<!-- Active Tab Content -->
 				<div class="row">
 					<div class="col-md-12 col-sm-12 col-xs-12">
@@ -259,8 +259,8 @@
 				</div>
 			</div>
 		</div>
-				
-		
+
+
 		<div class="section3-background">
 			<div class="container">
 				<!-- Section 3 -->
@@ -270,14 +270,14 @@
 						<p class="section3-header">SOME <b>FUN INFO</b></p>
 					</div>
 				</div>
-				
+
 				<!-- Icon -->
 				<div class="row">
 					<div class="col-md-offset-3 col-sm-offset-3 col-xs-offset-3 col-md-7 col-sm-7 col-xs-7">
 						<!-- Icon -->
 					</div>
 				</div>
-				
+
 				<!-- Pentagon Description -->
 				<div class="row">
 					<div class="col-md-12 col-sm-12 col-xs-12">
@@ -353,7 +353,7 @@
 				</div>
 			</div>
 		</div>
-			
+
 		<div class="section4-background">
 			<div class="row">
 				<!-- Section 4 -->
@@ -367,14 +367,14 @@
 									<p class="section4-header">BEST <b>SELLING TRIPS</b></p>
 								</div>
 							</div>
-							
+
 							<!-- Icon -->
 							<div class="row">
 								<div class="col-md-offset-3 col-sm-offset-3 col-xs-offset-3 col-md-7 col-sm-7 col-xs-7">
-										
+
 								</div>
 							</div>
-							
+
 							<!-- Description -->
 							<div class="row">
 								<div class="col-md-offset-1 col-sm-offset-1 col-xs-offset-1 col-md-10 col-sm-10 col-xs-10">
@@ -386,7 +386,7 @@
 							</div>
 						</div>
 					</div>
-					
+
 					<!-- Selling Box -->
 					<div class="row">
 						<!-- Selling Box (Right) -->
@@ -418,22 +418,22 @@
 									</div>
 								</div>
 							</div>
-							
+
 							<!-- Description -->
 							<div class="row">
 								<div class="col-md-12 col-sm-12 col-xs-12">
-									<p class="section4-description">Get closer to nature, from the jungles of India to African bush, 
-									our small group tours take you to the heart of nature. 
+									<p class="section4-description">Get closer to nature, from the jungles of India to African bush,
+									our small group tours take you to the heart of nature.
 									From elephants silhouetted against an Africa sunset to orangutans swinging in the treetops.</p>
 								</div>
 							</div>
-							
+
 							<!-- View Trip Button & Pagination -->
 							<div class="row">
 								<div class="col-md-12 col-sm-12 col-xs-12">
 									<!-- View Trip Button -->
 									<a href="#" class="section4-search pull-left" role="button">VIEW TRIP</a>
-									
+
 									<!-- Pagination on Right -->
 									<div class="pull-right">
 										<a href="#">
@@ -453,7 +453,7 @@
 									</div>
 								</div>
 							</div>
-							
+
 							<!-- Best Selling Box (Small) -->
 							<!-- Rail Trip & Brazil Trip -->
 							<div class="row">
@@ -498,7 +498,7 @@
 								</div>
 							</div>
 						</div>
-						
+
 						<!-- Selling Box (Left) -->
 						<div class="col-md-6 col-sm-6 col-xs-6">
 							<div class="row">
@@ -538,10 +538,10 @@
 						<div class="row">
 							<div class="col-md-offset-1 col-sm-offset-1 col-xs-offset-1 col-md-10 col-sm-10 col-xs-10">
 								<div class="about-description">
-									Travelling with G Adventures is the very best way to get up close 
-									and personal with your planet in a way you'd never manage on your 
-									own, for more 20 years, we've brought together people from 
-									all over the globe to create lifelong connections. This is your planet, 
+									Travelling with G Adventures is the very best way to get up close
+									and personal with your planet in a way you'd never manage on your
+									own, for more 20 years, we've brought together people from
+									all over the globe to create lifelong connections. This is your planet,
 									after all, and better you get to know it....
 								</div>
 							</div>
@@ -553,10 +553,10 @@
 				</div>
 			</div>
 		</div>
-		
+
 		<div class="whiterow">
 		</div>
-		
+
 		<div class="section5-background">
 			<!-- Section 5 -->
 			<div class="container">
@@ -594,7 +594,7 @@
 				</div>
 			</div>
 		</div>
-			
+
 		<div class="section6-background">
 			<!-- Section 6 -->
 			<div class="container">
@@ -607,8 +607,8 @@
 						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque dolor turpis, pulvinar varius dui <br/>
 						id, convallis iaculis eros. Praesent porta lacinia elementum.
 					</div>
-				</div>			
-				
+				</div>
+
 				<div class="row">
 					<div class="col-md-6 col-sm-6 col-xs-6">
 						<div class="blog-box1">
@@ -699,7 +699,7 @@
 				</div>
 			</div>
 		</div>
-			
+
 		<div class="section7-background">
 			<!-- Section 7 -->
 			<div class="container">
@@ -726,7 +726,7 @@
 			</div>
 		</div>
 	</div>
-	
+
 	<script>
             var resizefunc = [];
         </script>
@@ -813,18 +813,18 @@
         </script>
 
         <script>
-        
+
             	//get id adventure and destination
             	$('#search-button').on('click',function(){
 
             		//$('#adventure').on('change',function(){
 	            		var adv = $('#adventure').val();
-	            		console.log('adv');	
+	            		console.log('adv');
 	            	//});
 
 	            	//$('#destination').on('change',function(){
 	            		var destination = $('#destination').val();
-	            		console.log(destination);	
+	            		console.log(destination);
 	            	//});
 
 	            	//$('#tanggal').on('change',function(){
@@ -832,11 +832,11 @@
 	            		console.log(date);
 	            	//});
 
-	            	
-	            	 window.location.href = 'listing?adv='+adv+'&destination='+destination+'&date='+date;
-				
 
-            	
+	            	 window.location.href = 'listing?adv='+adv+'&destination='+destination+'&date='+date;
+
+
+
 
 
 

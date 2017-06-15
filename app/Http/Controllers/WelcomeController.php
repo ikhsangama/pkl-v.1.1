@@ -73,11 +73,12 @@ class WelcomeController extends Controller
           $q->where('start_date',$date);
         })
         ->where('adv_id','=',$adv)
-        ->where('id_lokasi','=',$destination)->get();
+        ->where('lokasi_id','=',$destination)->get();
         if(Auth::user()){
           $query2 = Auth::user()->id;
           return view('listing',['pakets'=>$pakets, 'query2'=>$query2]);
         }
+        dd($pakets);
        return view('listing',['pakets'=>$pakets,]);
     }
 

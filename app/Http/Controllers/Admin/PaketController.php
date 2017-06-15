@@ -29,10 +29,23 @@ class PaketController extends BaseController {
   }
 
   public function showAll()
-  {
-    $data['query'] = DB::table('adventures')->get();
-    return view('admin.product',$data);
-  }
+    {
+      //ngambil data adv
+      $data['query'] = DB::table('adventures')->get();
+
+      //ngambil data paket
+      // $data['product'] = DB::table('paket')
+      //                   ->leftJoin('schedule', 'paket.id', '=', 'schedule.paket_id')
+      //                   ->leftJoin('activity', 'paket.id', '=', 'activity.paket_id')
+      //                   ->get();
+
+      $data['product'] = DB::table('schedule')
+                        ->leftJoin('paket', 'schedule.id', '=', 'paket.schedule_id')
+                        ->leftJoin('activity', 'paket.id', '=', 'activity.paket_id')
+                        ->get();
+
+      return view('admin.product',$data);
+    }
 
   public function createByAdmin()
   {
@@ -53,15 +66,24 @@ class PaketController extends BaseController {
   public function storeByAdmin(Request $request)
   {
     // dd($request);
+    $schedule = new schedule();
+    // $schedule->paket_id = $paket->id;
+    $schedule->start_date = $request->start_date;
+    $schedule->end_date = $request->end_date;
+    $schedule->start_point = $request->pickuppoint;
+    $schedule->end_point = $request->endpoint;
+    $schedule->maxpeople = $request->peserta;
+    $schedule->save();
+
     $paket = new Paket;
     $paket->agents_id = $request->idagent;
     $paket->judul = $request->title;
     $paket->description = $request->description;
     $paket->price = $request->price;
     $paket->adv_id = $request->adv_id;
-    $paket->lokasi_id = $request->city;
+    $paket->lokasi_id = $request->provinsi;
+    $paket->schedule_id  = $schedule->id;
     $paket->detail = $request->detail;
-
     //simpan gambar
     $filePaket = $request->idagent.'_'.$request->title.'.png';
     $request->file('product')->storeAs("public\product",$filePaket);
@@ -69,14 +91,6 @@ class PaketController extends BaseController {
     $paket->save();
 
     // dd($paket->id);
-    $schedule = new schedule();
-    $schedule->paket_id = $paket->id;
-    $schedule->start_date = $request->start_date;
-    $schedule->end_date = $request->end_date;
-    $schedule->start_point = $request->pickuppoint;
-    $schedule->end_point = $request->endpoint;
-    $schedule->maxpeople = $request->peserta;
-    $schedule->save();
 
     $activity = new activity();
     $activity->paket_id = $paket->id;

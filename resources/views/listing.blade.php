@@ -1,13 +1,13 @@
 
 @extends('layouts.app')
 @section('content')
-	
+
 	<script type="text/javascript" src="{{ URL('assets/js/jquery.min.js') }}"></script>
 	<script type="text/javascript">
 		$(document).ready(function(){
 			$(".close-div").hide();
 			$(".shown").click(function(e){
-				e.stopPropagation();			
+				e.stopPropagation();
 				$(this).parents('.listing-box').find(".shown").hide();
 				$(this).parents('.listing-box').find(".close-div").fadeIn(500);
 			});
@@ -25,26 +25,26 @@
 				<div class="row">
 					<div class="col-md-offset-2 col-sm-offset-2 col-xs-offset-2 col-md-10 col-sm-10 col-xs-10">
 						<p class="list1-header">
-							NEKANEKA <b>LISTING</b> 
+							NEKANEKA <b>LISTING</b>
 						</p>
 					</div>
 				</div>
-				
+
 				<!-- Icon -->
 				<div class="row">
 					<div class="col-md-offset-2 col-sm-offset-2 col-xs-offset-2 col-md-10 col-sm-10 col-xs-10">
 						<div class="list1-icon">
-						</div>	
+						</div>
 					</div>
 				</div>
-				
+
 				<!-- Description -->
 				<div class="row">
 					<div class="col-md-offset-5 col-sm-offset-5 col-xs-offset-5 col-md-7 col-sm-7 col-xs-7">
 						<p class="list1-description">Where happiness are looking for your</p>
 					</div>
 				</div>
-				
+
 				<!-- HOME | ADVENTURES -->
 				<div class="row">
 					<div class="col-md-offset-5 col-sm-offset-5 col-xs-offset-5 col-md-7 col-sm-7 col-xs-7">
@@ -58,10 +58,10 @@
 						</div>
 					</div>
 				</div>
-				
+
 			</div>
 		</div>
-		
+
 		<div class="list2-background">
 			<div class="container">
 				<div class="row">
@@ -86,7 +86,7 @@
 							<option value="" selected disabled>Price</option>
 						</select>
 					</div>
-					
+
 					<!-- View Mode -->
 					<div class="col-md-2 col-sm-2 col-xs-2">
 						<div class="pull-right">
@@ -95,15 +95,15 @@
 				</div>
 			</div>
 		</div>
-		
+
 		<div class="list3-background">
 			<div class="container">
 				<div class="row">
 				@foreach ($pakets as $key => $paket)
 					<div class="col-md-4 col-sm-4 col-xs-4">
-						
+
 							<div class="listing-box" role="button" id="{{$paket->id}}">
-								<input type="hidden" id="id_paket" value="{{$paket->id}}">
+								<input type="hidden" id="paket_id" value="{{$paket->id}}">
 								<div class="close-div">
 									<div class="listing-trapezium-change" id="pop">
 										<div class="row normalize2" style="padding-left:10px;padding-right:10px;">
@@ -147,7 +147,7 @@
 													{{$paket->inf_lokasi->lokasi_nama}}
 											</div>
 										</div>
-										<div class="normalize bot-info"> 
+										<div class="normalize bot-info">
 											<div class="row">
 												<div class="col-md-12 col-sm-12 col-xs-12">
 													<div class="row">
@@ -162,24 +162,24 @@
 															</p>
 														</div>
 														<div class="col-md-3 col-sm-3 col-xs-3">
-															
+
 														</div>
 													</div>
 												</div>
 											</div>
 										</div>
 									</div>
-								</div>							
+								</div>
 							</div>
 						<!-- </a> -->
 					</div>
 				@endforeach
-					
-					<?php 
+
+					<?php
 					//}
 					?>
 					<!------------------------------------>
-					
+
 				</div>
 			</div>
 		</div>
@@ -188,13 +188,12 @@
 <script>
 
 $('.listing-box').on('click', function(e,unik) {
-	var unik = $('#id_paket').val();
+	var unik = $('#paket_id').val();
 	console.log(this.id);
 	window.location.href = 'detail/'+this.id;
-   
+
 });
 
 
 </script>
 @endsection
-

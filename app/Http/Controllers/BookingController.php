@@ -75,12 +75,12 @@ class BookingController extends Controller
       // $username = $username;
 
       $paket_id = $booking->paket_id;
-      $id_lokasi = Paket::find($paket_id)->id_lokasi;
-      $lokasi = Inf_lokasi::where('lokasi_ID', $id_lokasi)->first();
+      $lokasi_id = Paket::find($paket_id)->lokasi_id;
+      $lokasi = Inf_lokasi::where('lokasi_ID', $lokasi_id)->first();
       // dd($lokasi);
       $schedule_id = $booking->schedule_id;
       $schedule = Schedule::find($schedule_id);
-      // dd($booking, $user_email);
+      // dd($booking, $user, $lokasi, $schedule);
       event(new BookingCreated($booking, $user, $lokasi, $schedule));
       $request->session()->flash('status', 'Rincian Paket Perjalanan Telah Dikirim ke Email Anda');
       return redirect('/');
