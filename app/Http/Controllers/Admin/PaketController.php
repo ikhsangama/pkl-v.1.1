@@ -10,12 +10,14 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesResources;
 
+use App\User;
 use App\Models\Paket;
 use App\Models\Schedule;
 use App\Models\Activity;
 use DB;
 use App\Models\Adventures;
 use App\Models\Inf_lokasi;
+use App\Models\Product;
 //file
 use App\Http\Requests;
 use File;
@@ -30,21 +32,20 @@ class PaketController extends BaseController {
 
   public function showAll()
     {
-      //ngambil data adv
-      $data['query'] = DB::table('adventures')->get();
-
-      //ngambil data paket
-      // $data['product'] = DB::table('paket')
-      //                   ->leftJoin('schedule', 'paket.id', '=', 'schedule.paket_id')
-      //                   ->leftJoin('activity', 'paket.id', '=', 'activity.paket_id')
-      //                   ->get();
-
-      $data['product'] = DB::table('schedule')
-                        ->leftJoin('paket', 'schedule.id', '=', 'paket.schedule_id')
-                        ->leftJoin('activity', 'paket.id', '=', 'activity.paket_id')
-                        ->get();
-
-      return view('admin.product',$data);
+      // ngambil data adv
+      $data['query'] = DB::table('products')->get();
+      // dd($data);
+      // $products = Product::get()->pluck('agent_id')->toArray();
+      // $products = Product::get();
+      // dd($products);
+      // $agents = $products->user_agent;
+      // $juduls = $products->paket_judul;
+      // $hargas = $products->paket_harga;
+      // $starts = $products->schedule_jadwal_start;
+      // $ends = $products->schedule_jadwal_end;
+      // $agent_id = $data->agent_id;
+      // dd($agent_id);
+      return view('admin.product', $data);
     }
 
   public function createByAdmin()
@@ -92,10 +93,37 @@ class PaketController extends BaseController {
 
     // dd($paket->id);
 
-    $activity = new activity();
+    $activity = new Activity();
     $activity->paket_id = $paket->id;
     $activity->event = $request->event;
     $activity->save();
+////////////////////////////////////////////////
+    $product = new Product();
+    $product->agent_id = $request->idagent;
+    $product->paket_id = $paket->id;
+    $product->schedule_id = $schedule->id;
+    $product->inf_lokasi_id = $request->provinsi;
+
+    $user_agent = $request->idagent;
+    // dd($user_agent);
+    $agent = User::find($request->idagent)->username;
+    // dd($agent);
+    $product->user_agent = $agent;
+
+    $paket_judul = Paket::find($paket->id)->judul;
+    $product->paket_judul = $paket_judul;
+
+    $paket_harga = Paket::find($paket->id)->price;
+    $product->paket_harga = $paket_harga;
+
+    // dd($request->start_date, $request->end_date);
+    $product->schedule_jadwal_start = $request->start_date;
+    $product->schedule_jadwal_end = $request->end_date;
+
+    $schedule_peserta = $schedule->id;
+    $schedule_peserta = Schedule::find($schedule_peserta)->maxpeople;
+    $product->schedule_peserta = $schedule_peserta;
+    $product->save();
 
     return redirect ('/dash/products');
     }

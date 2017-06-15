@@ -126,7 +126,7 @@
                                         <select class="form-control" name="idagent">
                                             <option value="P0" selected disabled>Agent</option>
                                             @foreach($query1 as $result)
-                                            <option value="{{$result->id}}">
+                                            <option value="{{$result->user_id}}">
                                             <?php
                                                 echo $result->fullname
                                             ?></option>

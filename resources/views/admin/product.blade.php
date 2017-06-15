@@ -112,16 +112,7 @@
                                             <a href="/dash/products" class="btn btn-primary waves-effect waves-light">List Product <i class="fa fa-list"></i></a>
                                         </div>
                                         <div class="m-b-30">
-                                            <h2>Kategori</h2>
-                                                <select class="form-control">
-                                                    <option value="" selected disabled>All Adventure</option>
-                                                        @foreach($query as $result)
-                                                        <option value="{{$result->id_adv}}">
-                                                        <?php
-                                                            echo $result->nama_adv
-                                                        ?></option>
-                                                        @endforeach
-                                                </select>
+
                                         </div>
                                     </div>
                                 </div>
@@ -141,13 +132,13 @@
                                         </thead>
                                         <tbody>
                                             <tr class="gradeX">
-                                            @foreach($product as $product)
+                                            @foreach($query as $product)
                                                 <td>{{$product->id }}</td>
-                                                <td>{{$product->agents_id }}</td>
-                                                <td>{{$product->judul }}</td>
-                                                <td>Rp. {{$product->price }} /pax</td>
-                                                <td>{{$product->start_date }} s/d {{$product->end_date }}</td>
-                                                <td>{{$product->maxpeople }} orang</td>
+                                                <td>{{$product->user_agent }}</td>
+                                                <td>{{$product->paket_judul }}</td>
+                                                <td>Rp. {{$product->paket_harga }} /pax</td>
+                                                <td>{{$product->schedule_jadwal_start }} s/d {{$product->schedule_jadwal_end }}</td>
+                                                <td>{{$product->schedule_max_people }} orang</td>
                                                 <td class="actions">
                                                     <a onclick="" href="/dash/product/{{$product->id}}/edit" class="on-default edit-row"><i class="fa fa-pencil"></i></a>
                                                     <a onclick="" href="#" class="on-default remove-row"><i class="fa fa-trash-o"></i></a>

@@ -78,7 +78,7 @@ class WelcomeController extends Controller
           $query2 = Auth::user()->id;
           return view('listing',['pakets'=>$pakets, 'query2'=>$query2]);
         }
-        dd($pakets);
+        // dd($pakets);
        return view('listing',['pakets'=>$pakets,]);
     }
 
