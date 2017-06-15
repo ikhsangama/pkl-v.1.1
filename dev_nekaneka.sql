@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 14, 2017 at 04:50 PM
+-- Generation Time: Jun 15, 2017 at 11:42 PM
 -- Server version: 10.1.16-MariaDB
 -- PHP Version: 7.0.9
 
@@ -41,7 +41,28 @@ INSERT INTO `activity` (`id`, `paket_id`, `event`) VALUES
 (3, 0, 'Kumpul'),
 (4, 21, 'asd'),
 (5, 22, 'abab'),
-(6, 23, 'iti');
+(6, 23, 'iti'),
+(7, 24, 'iti'),
+(8, 25, 'asd'),
+(9, 26, 'iti'),
+(10, 27, 'wew\r\n\r\nasd\r\n\r\nzxc'),
+(11, 28, 'iti'),
+(12, 29, 'iti'),
+(13, 30, 'iti'),
+(14, 31, 'iti'),
+(15, 32, 'iti'),
+(16, 33, 'c'),
+(17, 34, 'c'),
+(18, 35, 'c'),
+(19, 36, 'c'),
+(20, 37, 'c'),
+(21, 38, 'c'),
+(22, 39, 'c'),
+(23, 40, 'c'),
+(24, 41, 'c'),
+(25, 42, 'c'),
+(26, 43, 'c'),
+(27, 44, 'c');
 
 -- --------------------------------------------------------
 
@@ -155,7 +176,16 @@ INSERT INTO `bookings` (`id`, `paket_id`, `customer_id`, `schedule_id`, `partici
 (63, 1, 2, 1, 4, 'UvjC5rcz7TQzIeAvsqz3', NULL, NULL, '2017-06-12 09:39:37', '2017-06-12 09:39:37'),
 (64, 1, 2, 1, 4, 'tg8Lti80THG1FF468l2T', NULL, NULL, '2017-06-12 09:40:36', '2017-06-12 09:40:36'),
 (65, 1, 2, 1, 4, 'WtIOQbJ8PUzc3B1kSsb4', NULL, NULL, '2017-06-12 09:43:06', '2017-06-12 09:43:06'),
-(66, 1, 2, 1, 3, 'w4fwIsV6HtCtPkARwYhA', NULL, NULL, '2017-06-12 10:31:31', '2017-06-12 10:31:31');
+(66, 1, 2, 1, 3, 'w4fwIsV6HtCtPkARwYhA', NULL, NULL, '2017-06-12 10:31:31', '2017-06-12 10:31:31'),
+(67, 1, 2, 1, 22, 'T7OYVyyQFMGjfbnmN8p0', 0, NULL, '2017-06-15 01:17:35', '2017-06-15 01:17:35'),
+(68, 1, 2, 1, 22, '41XFIf2tbefTWgXll66T', 0, NULL, '2017-06-15 01:18:45', '2017-06-15 01:18:45'),
+(69, 26, 2, 13, 3, 'maC7MTCMYj97WfsqrRsI', 0, NULL, '2017-06-15 02:01:22', '2017-06-15 02:01:22'),
+(70, 26, 2, 13, 3, 'nuuAZwQIPBVMXJg695LZ', 0, NULL, '2017-06-15 02:03:29', '2017-06-15 02:03:29'),
+(71, 26, 2, 13, 3, 'OwebvYfXSquqpfOxWehZ', 0, NULL, '2017-06-15 02:05:26', '2017-06-15 02:05:26'),
+(72, 26, 2, 13, 3, '8wVSYE0AvU9GX3DSTmBm', 0, NULL, '2017-06-15 02:05:54', '2017-06-15 02:05:54'),
+(73, 27, 2, 14, 1, 'MCLoCLkjF7gLsVjvOvhz', 0, NULL, '2017-06-15 02:27:53', '2017-06-15 02:27:53'),
+(74, 1, 2, 1, 1, 'VPq8KpOl7oW5lF1lxaL6', 0, NULL, '2017-06-15 04:57:38', '2017-06-15 04:57:38'),
+(75, 1, 3, 1, 1, '5i6cSpr5BfN9b0N6wIu7', 0, NULL, '2017-06-15 05:00:41', '2017-06-15 05:00:41');
 
 -- --------------------------------------------------------
 
@@ -184,7 +214,8 @@ CREATE TABLE `customers` (
 --
 
 INSERT INTO `customers` (`id`, `user_id`, `nomorid`, `firstname`, `lastname`, `alamat`, `phone`, `gender`, `tanggallahir`, `nationality`, `remember_token`, `created_at`, `updated_at`) VALUES
-(2, 22, NULL, 'cust', 'cust', 'jalanjalan', '123', 'F', '2017-06-07', '', NULL, '2017-05-30 04:54:12', '2017-06-14 04:54:08');
+(2, 22, NULL, 'cust', 'cust', 'jalanjalan', '123', 'F', '2017-06-07', '', NULL, '2017-05-30 04:54:12', '2017-06-14 04:54:08'),
+(3, 24, NULL, 'Durenworks', 'Nekaneka', 'Spiegel', '085712312350', 'M', NULL, NULL, NULL, '2017-06-15 04:58:29', '2017-06-15 04:59:31');
 
 -- --------------------------------------------------------
 
@@ -68760,6 +68791,7 @@ INSERT INTO `migrations` (`migration`, `batch`) VALUES
 CREATE TABLE `paket` (
   `id` int(10) UNSIGNED NOT NULL,
   `agents_id` int(11) NOT NULL,
+  `schedule_id` int(11) NOT NULL,
   `judul` text COLLATE utf8_unicode_ci NOT NULL,
   `description` text COLLATE utf8_unicode_ci NOT NULL,
   `multipic` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -68776,15 +68808,36 @@ CREATE TABLE `paket` (
 -- Dumping data for table `paket`
 --
 
-INSERT INTO `paket` (`id`, `agents_id`, `judul`, `description`, `multipic`, `price`, `detail`, `remember_token`, `created_at`, `updated_at`, `adv_id`, `lokasi_id`) VALUES
-(1, 1, 'cdcdc', 'cdcd', NULL, 134414, 'xxvxv', NULL, NULL, NULL, 1, 11),
-(2, 1, 'fdfdfd', 'fdgg', NULL, 454445, 'bbbb', NULL, NULL, NULL, 1, 11),
-(3, 1, 'vcvcvc', 'vbcvc', NULL, 3325554, 'bvbcvb', NULL, NULL, NULL, 2, 5300),
-(4, 1, 'fvvxcv', 'cbvbvb', NULL, 131313113, 'vbbvbvcb', NULL, NULL, NULL, 1, 5300),
-(5, 1, 'fgfhgfh', 'hgfhf', NULL, 32432443, 'dfbvbcv', NULL, NULL, NULL, 1, 8100),
-(21, 11, 'coba', 'asd', '_diri.png', 100000, '12', NULL, '2017-06-14 07:48:39', '2017-06-14 07:48:39', 3, 10),
-(22, 11, 'title', 'asd', '_diri.png', 100000, 'asd', NULL, '2017-06-14 07:53:33', '2017-06-14 07:53:33', 1, 17),
-(23, 11, 'title', 'description', '11_title.png', 100000, 'detail', NULL, '2017-06-14 08:08:48', '2017-06-14 08:08:48', 1, 1);
+INSERT INTO `paket` (`id`, `agents_id`, `schedule_id`, `judul`, `description`, `multipic`, `price`, `detail`, `remember_token`, `created_at`, `updated_at`, `adv_id`, `lokasi_id`) VALUES
+(1, 1, 1, 'cdcdc', 'Ipsum lorem dolor sit amet, duo an lorem diceret suavitate. Quo ea solum soluta persequeris, ei tota omnium vituperata pri. Ex vis wisi adipisci, vix ex viderer scripserit. Eos eu sonet eruditi perfecto, vidit deserunt intellegam ea quo. Eam an dicat delicata, amet tempor accumsan ne duo. Sale option ornatus vim ei, mel eu inani aeque principes.', NULL, 250000, 'Lorem ipsum dolor sit amet, brute inimicus eos cu. Dicant dicunt eos ei, an pri enim vidit temporibus. Alia nostro dissentiet te duo. Sit homero propriae et, inermis prodesset eu eum. Eos dicat fabellas definitiones cu, nihil malorum et mel.', NULL, NULL, NULL, 1, 11),
+(2, 1, 1, 'fdfdfd', 'Ipsum Lorem dolor sit amet, duo an lorem diceret suavitate. Quo ea solum soluta persequeris, ei tota omnium vituperata pri. Ex vis wisi adipisci, vix ex viderer scripserit. Eos eu sonet eruditi perfecto, vidit deserunt intellegam ea quo. Eam an dicat delicata, amet tempor accumsan ne duo. Sale option ornatus vim ei, mel eu inani aeque principes.', NULL, 150000, 'Lorem ipsum dolor sit amet, brute inimicus eos cu. Dicant dicunt eos ei, an pri enim vidit temporibus. Alia nostro dissentiet te duo. Sit homero propriae et, inermis prodesset eu eum. Eos dicat fabellas definitiones cu, nihil malorum et mel.', NULL, NULL, NULL, 1, 11),
+(3, 1, 1, 'vcvcvc', 'vbcvc', NULL, 3325554, 'bvbcvb', NULL, NULL, NULL, 2, 5300),
+(4, 1, 1, 'fvvxcv', 'cbvbvb', NULL, 131313113, 'vbbvbvcb', NULL, NULL, NULL, 1, 5300),
+(5, 1, 1, 'fgfhgfh', 'hgfhf', NULL, 32432443, 'dfbvbcv', NULL, NULL, NULL, 1, 8100),
+(21, 11, 1, 'coba', 'asd', '_diri.png', 100000, '12', NULL, '2017-06-14 07:48:39', '2017-06-14 07:48:39', 3, 10),
+(22, 11, 1, 'title', 'asd', '_diri.png', 100000, 'asd', NULL, '2017-06-14 07:53:33', '2017-06-14 07:53:33', 1, 17),
+(23, 11, 1, 'title', 'description', '11_title.png', 100000, 'detail', NULL, '2017-06-14 08:08:48', '2017-06-14 08:08:48', 1, 1),
+(24, 11, 10, 'ti', 'desc', '11_ti.png', 1000000, 'detail', NULL, '2017-06-15 01:29:10', '2017-06-15 01:29:10', 1, 355),
+(25, 11, 12, 'title', 'asd', '11_title.png', 100000, 'asd', NULL, '2017-06-15 01:31:22', '2017-06-15 01:31:22', 2, 1),
+(26, 11, 13, 'asd', 'aasd', '11_asd.png', 100000, '100', NULL, '2017-06-15 01:35:46', '2017-06-15 01:35:46', 9, 17),
+(27, 10, 14, '2K Run', 'Lorem ipsum dolor sit amet, liber gloriatur concludaturque no qui, eripuit dolores adipisci sit ex, quot eligendi ut eum. Quod minim scaevola at vel, ea mea insolens petentium dissentias. Justo verear repudiare vis et, ne sea justo causae, sumo denique conclusionemque ut usu. Vis saepe efficiantur intellegebat ea, cu vis tritani conclusionemque. No nusquam electram referrentur nec, per cu mutat discere debitis, an quo iisque feugait vituperatoribus.', '10_2K Run.png', 50000, 'Lorem ipsum dolor sit amet, liber gloriatur concludaturque no qui, eripuit dolores adipisci sit ex, quot eligendi ut eum. Quod minim scaevola at vel, ea mea insolens petentium dissentias. Justo verear repudiare vis et, ne sea justo causae, sumo denique conclusionemque ut usu. Vis saepe efficiantur intellegebat ea, cu vis tritani conclusionemque. No nusquam electram referrentur nec, per cu mutat discere debitis, an quo iisque feugait vituperatoribus.', NULL, '2017-06-15 02:24:23', '2017-06-15 02:24:23', 1, 13),
+(28, 11, 15, 'titl', 'asd', '11_titl.png', 100000, 'asd', NULL, '2017-06-15 02:56:59', '2017-06-15 02:56:59', 2, 17),
+(29, 11, 16, 'titl', 'asd', '11_titl.png', 100000, 'asd', NULL, '2017-06-15 02:58:32', '2017-06-15 02:58:32', 2, 17),
+(30, 11, 17, 'coba', 'cobades', '11_coba.png', 100000, 'cobadet', NULL, '2017-06-15 03:50:37', '2017-06-15 03:50:37', 3, 17),
+(31, 11, 18, 'coba', 'cobades', '11_coba.png', 100000, 'cobadet', NULL, '2017-06-15 03:52:55', '2017-06-15 03:52:55', 3, 17),
+(32, 11, 19, 'coba', 'cobades', '11_coba.png', 100000, 'cobadet', NULL, '2017-06-15 03:54:23', '2017-06-15 03:54:23', 3, 17),
+(33, 23, 20, 'c', 'c', '23_c.png', 100000, 'c', NULL, '2017-06-15 03:57:24', '2017-06-15 03:57:24', 3, 17),
+(34, 23, 21, 'c', 'c', '23_c.png', 100000, 'c', NULL, '2017-06-15 03:57:36', '2017-06-15 03:57:36', 3, 17),
+(35, 23, 22, 'c', 'c', '23_c.png', 100000, 'c', NULL, '2017-06-15 03:58:55', '2017-06-15 03:58:55', 3, 17),
+(36, 23, 23, 'c', 'c', '23_c.png', 100000, 'c', NULL, '2017-06-15 04:00:54', '2017-06-15 04:00:54', 3, 17),
+(37, 23, 24, 'c', 'c', '23_c.png', 100000, 'c', NULL, '2017-06-15 04:01:59', '2017-06-15 04:01:59', 3, 17),
+(38, 23, 25, 'c', 'c', '23_c.png', 100000, 'c', NULL, '2017-06-15 04:02:17', '2017-06-15 04:02:17', 3, 17),
+(39, 23, 26, 'c', 'c', '23_c.png', 100000, 'c', NULL, '2017-06-15 04:02:28', '2017-06-15 04:02:28', 3, 17),
+(40, 23, 27, 'c', 'c', '23_c.png', 100000, 'c', NULL, '2017-06-15 04:07:46', '2017-06-15 04:07:46', 3, 17),
+(41, 23, 28, 'c', 'c', '23_c.png', 100000, 'c', NULL, '2017-06-15 04:08:10', '2017-06-15 04:08:10', 3, 17),
+(42, 23, 29, 'c', 'c', '23_c.png', 100000, 'c', NULL, '2017-06-15 04:09:59', '2017-06-15 04:09:59', 3, 17),
+(43, 23, 30, 'c', 'c', '23_c.png', 100000, 'c', NULL, '2017-06-15 04:12:19', '2017-06-15 04:12:19', 3, 17),
+(44, 23, 31, 'c', 'c', '23_c.png', 100000, 'c', NULL, '2017-06-15 04:13:06', '2017-06-15 04:13:06', 3, 17);
 
 -- --------------------------------------------------------
 
@@ -68842,12 +68895,39 @@ CREATE TABLE `payment` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `products`
+--
+
+CREATE TABLE `products` (
+  `id` int(11) NOT NULL,
+  `agent_id` int(11) NOT NULL,
+  `paket_id` int(11) NOT NULL,
+  `schedule_id` int(11) NOT NULL,
+  `inf_lokasi_id` int(11) NOT NULL,
+  `user_agent` varchar(50) NOT NULL,
+  `paket_judul` varchar(255) NOT NULL,
+  `paket_harga` int(11) NOT NULL,
+  `schedule_jadwal_start` date NOT NULL,
+  `schedule_jadwal_end` date NOT NULL,
+  `schedule_max_people` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `products`
+--
+
+INSERT INTO `products` (`id`, `agent_id`, `paket_id`, `schedule_id`, `inf_lokasi_id`, `user_agent`, `paket_judul`, `paket_harga`, `schedule_jadwal_start`, `schedule_jadwal_end`, `schedule_max_people`) VALUES
+(1, 11, 29, 16, 17, '0', '', 0, '0000-00-00', '0000-00-00', 0),
+(2, 23, 44, 31, 17, 'agent22', 'c', 100000, '2017-06-02', '2017-06-02', 1000);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `schedule`
 --
 
 CREATE TABLE `schedule` (
   `id` int(10) UNSIGNED NOT NULL,
-  `paket_id` int(11) NOT NULL,
   `start_date` date NOT NULL,
   `end_date` date NOT NULL,
   `start_point` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
@@ -68862,16 +68942,38 @@ CREATE TABLE `schedule` (
 -- Dumping data for table `schedule`
 --
 
-INSERT INTO `schedule` (`id`, `paket_id`, `start_date`, `end_date`, `start_point`, `end_point`, `maxpeople`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 0, '2017-01-01', '2017-01-25', 'hgdjjsds', 'hgh', 3233, NULL, NULL, NULL),
-(2, 15, '2017-06-01', '2017-06-03', 'asd', 'asd', 100, NULL, '2017-06-14 07:39:36', '2017-06-14 07:39:36'),
-(3, 17, '2017-06-01', '2017-06-03', 'asd', 'asd', 100, NULL, '2017-06-14 07:42:19', '2017-06-14 07:42:19'),
-(4, 18, '2017-06-01', '2017-06-03', 'asd', 'asd', 100, NULL, '2017-06-14 07:42:26', '2017-06-14 07:42:26'),
-(5, 19, '2017-06-01', '2017-06-03', 'asd', 'asd', 100, NULL, '2017-06-14 07:42:47', '2017-06-14 07:42:47'),
-(6, 20, '2017-06-01', '2017-06-03', 'asd', 'asd', 100, NULL, '2017-06-14 07:46:37', '2017-06-14 07:46:37'),
-(7, 21, '2017-06-01', '2017-06-03', 'asd', 'asd', 100, NULL, '2017-06-14 07:48:39', '2017-06-14 07:48:39'),
-(8, 22, '2017-06-01', '2017-06-01', 'aaa', 'bbb', 123, NULL, '2017-06-14 07:53:33', '2017-06-14 07:53:33'),
-(9, 23, '2017-06-01', '2017-06-02', 'Semarang', 'end', 100, NULL, '2017-06-14 08:08:48', '2017-06-14 08:08:48');
+INSERT INTO `schedule` (`id`, `start_date`, `end_date`, `start_point`, `end_point`, `maxpeople`, `remember_token`, `created_at`, `updated_at`) VALUES
+(1, '2017-01-01', '2017-01-25', 'hgdjjsds', 'hgh', 3233, NULL, NULL, NULL),
+(2, '2017-06-01', '2017-06-03', 'asd', 'asd', 100, NULL, '2017-06-14 07:39:36', '2017-06-14 07:39:36'),
+(3, '2017-06-01', '2017-06-03', 'asd', 'asd', 100, NULL, '2017-06-14 07:42:19', '2017-06-14 07:42:19'),
+(4, '2017-06-01', '2017-06-03', 'asd', 'asd', 100, NULL, '2017-06-14 07:42:26', '2017-06-14 07:42:26'),
+(5, '2017-06-01', '2017-06-03', 'asd', 'asd', 100, NULL, '2017-06-14 07:42:47', '2017-06-14 07:42:47'),
+(6, '2017-06-01', '2017-06-03', 'asd', 'asd', 100, NULL, '2017-06-14 07:46:37', '2017-06-14 07:46:37'),
+(7, '2017-06-01', '2017-06-03', 'asd', 'asd', 100, NULL, '2017-06-14 07:48:39', '2017-06-14 07:48:39'),
+(8, '2017-06-01', '2017-06-01', 'aaa', 'bbb', 123, NULL, '2017-06-14 07:53:33', '2017-06-14 07:53:33'),
+(9, '2017-06-01', '2017-06-02', 'Semarang', 'end', 100, NULL, '2017-06-14 08:08:48', '2017-06-14 08:08:48'),
+(10, '2017-06-01', '2017-06-01', 'aaa', 'end', 100, NULL, '2017-06-15 01:29:09', '2017-06-15 01:29:09'),
+(11, '2017-06-01', '2017-06-30', 'aaa', 'end', 100, NULL, '2017-06-15 01:30:55', '2017-06-15 01:30:55'),
+(12, '2017-06-01', '2017-06-30', 'aaa', 'end', 100, NULL, '2017-06-15 01:31:22', '2017-06-15 01:31:22'),
+(13, '2017-06-01', '2017-06-02', 'pick', 'end', 100, NULL, '2017-06-15 01:35:46', '2017-06-15 01:35:46'),
+(14, '2017-06-01', '2017-06-03', 'Simpang Lima', 'Simpang Lima', 100, NULL, '2017-06-15 02:24:23', '2017-06-15 02:24:23'),
+(15, '2017-06-02', '2017-06-02', 'aaa', 'aaa', 100, NULL, '2017-06-15 02:56:59', '2017-06-15 02:56:59'),
+(16, '2017-06-02', '2017-06-02', 'aaa', 'aaa', 100, NULL, '2017-06-15 02:58:31', '2017-06-15 02:58:31'),
+(17, '2017-06-03', '2017-06-03', 'coba', 'coba', 30, NULL, '2017-06-15 03:50:37', '2017-06-15 03:50:37'),
+(18, '2017-06-03', '2017-06-03', 'coba', 'coba', 30, NULL, '2017-06-15 03:52:55', '2017-06-15 03:52:55'),
+(19, '2017-06-03', '2017-06-03', 'coba', 'coba', 30, NULL, '2017-06-15 03:54:23', '2017-06-15 03:54:23'),
+(20, '2017-06-02', '2017-06-02', 'c', 'c', 1000, NULL, '2017-06-15 03:57:24', '2017-06-15 03:57:24'),
+(21, '2017-06-02', '2017-06-02', 'c', 'c', 1000, NULL, '2017-06-15 03:57:36', '2017-06-15 03:57:36'),
+(22, '2017-06-02', '2017-06-02', 'c', 'c', 1000, NULL, '2017-06-15 03:58:55', '2017-06-15 03:58:55'),
+(23, '2017-06-02', '2017-06-02', 'c', 'c', 1000, NULL, '2017-06-15 04:00:53', '2017-06-15 04:00:53'),
+(24, '2017-06-02', '2017-06-02', 'c', 'c', 1000, NULL, '2017-06-15 04:01:59', '2017-06-15 04:01:59'),
+(25, '2017-06-02', '2017-06-02', 'c', 'c', 1000, NULL, '2017-06-15 04:02:17', '2017-06-15 04:02:17'),
+(26, '2017-06-02', '2017-06-02', 'c', 'c', 1000, NULL, '2017-06-15 04:02:28', '2017-06-15 04:02:28'),
+(27, '2017-06-02', '2017-06-02', 'c', 'c', 1000, NULL, '2017-06-15 04:07:46', '2017-06-15 04:07:46'),
+(28, '2017-06-02', '2017-06-02', 'c', 'c', 1000, NULL, '2017-06-15 04:08:10', '2017-06-15 04:08:10'),
+(29, '2017-06-02', '2017-06-02', 'c', 'c', 1000, NULL, '2017-06-15 04:09:59', '2017-06-15 04:09:59'),
+(30, '2017-06-02', '2017-06-02', 'c', 'c', 1000, NULL, '2017-06-15 04:12:19', '2017-06-15 04:12:19'),
+(31, '2017-06-02', '2017-06-02', 'c', 'c', 1000, NULL, '2017-06-15 04:13:06', '2017-06-15 04:13:06');
 
 -- --------------------------------------------------------
 
@@ -68913,12 +69015,13 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `email`, `password`, `stat`, `level`, `ver_token`, `remember_token`, `created_at`, `updated_at`) VALUES
-(5, 'admin', 'admin@email.com', '$2y$10$N61F8TiiR4ITzO4HLfjBReT0r.qqIUErXN0X3pjrf90MJHVR6EK66', 1, 0, 'JRUzGjs7pzWqxggJEQj6', 'ayBnI3lcDftTmXGzqSOLuPWhNxaQsI97JxHd7LL0O79F5i6RyH0LMCb9HQNh', '2017-05-24 17:27:32', '2017-06-14 04:57:17'),
+(5, 'admin', 'admin@email.com', '$2y$10$N61F8TiiR4ITzO4HLfjBReT0r.qqIUErXN0X3pjrf90MJHVR6EK66', 1, 0, 'JRUzGjs7pzWqxggJEQj6', 'mNImAswjNuybuuIMffyGVyvaA291d2W9FR7KI6mLrX1W00ykL8lfuA5PUb84', '2017-05-24 17:27:32', '2017-06-15 04:56:32'),
 (6, 'agent1', 'agent1@email.com', '$2y$10$ArXX2JbxMBIO1qsIVJjRCO3L3Nwza8KIxrRTx7Q3xjFXNR4b0AxzC', 1, 2, '9YnZjMCY9oW11Dbz4NgE', 'ZACqS08a2jTZrqHiJAnk2SZI7Px5UTeVALqDOLzOednc3TWhbpvVerssCLNH', '2017-05-25 05:08:21', '2017-06-14 04:41:12'),
 (10, 'agent3', 'agent3@email.com', '$2y$10$BJxCSqmywmBKgaO.pDeW.uSb3GhUvUAHj0s4HAvZBxck52.mvmVKq', 0, 1, 'KOSXHNekO9fUQhJ7Y2dD', NULL, '2017-05-25 15:27:23', '2017-05-25 15:27:23'),
 (20, 'agent5', 'agent5@email.com', '$2y$10$O8qpLaXQzwLGsGG3bLvre.sC/b2GTwP/MrKDn6jZe/0J4kSlfo/p.', 1, 2, 'bYlbeWKpZa225B6eSSDt', NULL, '2017-05-26 19:47:35', '2017-05-26 19:47:35'),
-(22, 'cust3', 'cust3@email.com', '$2y$10$GPCFd5Iw5qc2zFefFo9/jeaMTtPmh0ouK5MvgYbaMN26FzlUkwVmS', 1, 1, 'Bek8SEa4RpcHQU2ogj0u', 'kvKfdt9G39nVNZypfN7mnkecuvZqDa2aV84cjUHbf0lKSzN0tzoFhKkXqKer', '2017-05-30 04:54:12', '2017-06-14 04:54:58'),
-(23, 'agent22', 'agent22@email.com', '$2y$10$1zz85xpJyP1r4AN/XS2svuTwtv8qnlJXORpy2wbvo53.KV5a6kgou', 0, 2, 'XR8b70qhRgSkHbODyzSz', 'ggYG3cS5JZZJeNESLhVuGHLhSV8Wl9HSEDxY43lwDXuD0YROKzs7EayNzDJi', '2017-06-14 04:45:22', '2017-06-14 04:58:16');
+(22, 'cust3', 'cust3@email.com', '$2y$10$GPCFd5Iw5qc2zFefFo9/jeaMTtPmh0ouK5MvgYbaMN26FzlUkwVmS', 1, 1, 'Bek8SEa4RpcHQU2ogj0u', 'QuGJjj2L6LIFcN6J9WtJdT3nOhtiixx7i5StzvGHRURwHgJ2YpWGvbL10Yi3', '2017-05-30 04:54:12', '2017-06-15 04:58:07'),
+(23, 'agent22', 'agent22@email.com', '$2y$10$FC9JtYk620G7tCPixV.aG.uRiQpUJc4J9DH/lVm6G5A3g30IIWSMy', 0, 2, 'XR8b70qhRgSkHbODyzSz', 'rTB3lZLKgAzUDvlWHmtegFYM9erU33KsGJIlHLLXeSdNbxohqhp5clpONWQj', '2017-06-14 04:45:22', '2017-06-15 21:41:05'),
+(24, 'Impala', 'impala@email.com', '$2y$10$Lmn.mxb4BBaJ6m/nlHrB1u436a29wt9ZWn3ax98k.xR90Jdx0IU1y', 1, 1, 'L71KiW9X2Spwp3dyatrR', 'UzTQKfMeDr1LXXAKY7uI4IDChxMR6H6IITLDTo0HCCMXl3uWts74nA6XAxYZ', '2017-06-15 04:58:29', '2017-06-15 05:16:57');
 
 -- --------------------------------------------------------
 
@@ -69018,11 +69121,16 @@ ALTER TABLE `payment`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `products`
+--
+ALTER TABLE `products`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `schedule`
 --
 ALTER TABLE `schedule`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `paket_id` (`paket_id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `service_booking`
@@ -69052,7 +69160,7 @@ ALTER TABLE `usersss`
 -- AUTO_INCREMENT for table `activity`
 --
 ALTER TABLE `activity`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 --
 -- AUTO_INCREMENT for table `adventures`
 --
@@ -69067,12 +69175,12 @@ ALTER TABLE `agents`
 -- AUTO_INCREMENT for table `bookings`
 --
 ALTER TABLE `bookings`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=76;
 --
 -- AUTO_INCREMENT for table `customers`
 --
 ALTER TABLE `customers`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `feedback`
 --
@@ -69087,7 +69195,7 @@ ALTER TABLE `inf_lokasi`
 -- AUTO_INCREMENT for table `paket`
 --
 ALTER TABLE `paket`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 --
 -- AUTO_INCREMENT for table `paket_foto`
 --
@@ -69099,10 +69207,15 @@ ALTER TABLE `paket_foto`
 ALTER TABLE `payment`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
+-- AUTO_INCREMENT for table `products`
+--
+ALTER TABLE `products`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
 -- AUTO_INCREMENT for table `schedule`
 --
 ALTER TABLE `schedule`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 --
 -- AUTO_INCREMENT for table `service_booking`
 --
@@ -69112,7 +69225,7 @@ ALTER TABLE `service_booking`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 --
 -- AUTO_INCREMENT for table `usersss`
 --
